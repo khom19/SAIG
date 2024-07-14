@@ -1,7 +1,11 @@
 import './App.css';
+import React , { Component } from 'react';
 import { FaUser , FaLock } from "react-icons/fa";
+import './index' ;
+import { Link } from 'react-router-dom';
 
-function App() {
+class App extends Component {
+  render () {
   return (
     <div className='warp'>
       <h1>Welcome to Board-Go</h1>
@@ -22,7 +26,7 @@ function App() {
             <input type='checkbox' ></input>
             Remember me
           </label>
-          <a href='#'>Forgot password?</a>
+          <nav><Link to='/forgot'>Forgot password?</Link></nav>
         </div>
 
         <div className='singIn'>
@@ -30,12 +34,12 @@ function App() {
         </div>
 
         <div className='account'>
-          Don't have an account?
-          <a href='#' > Sing up</a>
+        <nav>Don't have an account?<Link to='/signUp'>Sing Up</Link></nav>
         </div>
       </div>
     </div>
-  );
-}
+    );
+  }
+} 
 
 export default App;
