@@ -63,13 +63,14 @@ color: rgb(65, 33, 33);
   border: 1px solid rgb(155, 123, 93);
   border-radius: 40px ;
   font-size: 16px;
+  padding-left: 20px;
+  padding-right: 35px;
 }
 
 .warp .inputbox input::placeholder {
   font-family: "Cabin", sans-serif;
   color: rgb(155, 123, 93);
   position: relative;
-  left: 15px;
 }
 
 .warp .inputbox .icon {
@@ -77,4 +78,13 @@ color: rgb(65, 33, 33);
   left: 290px;
   top: 29%
 
+}
+
+.forgot-remem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 25px;
+  margin-left: 16%;
+  margin-right: 19%;
 }

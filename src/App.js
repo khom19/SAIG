@@ -18,9 +18,9 @@ function App() {
           <FaLock className='icon'/>
         </div>
 
-        <div className='fogot-remem'>
-          <input type='checkbox'></input>
-          Remember me
+        <div className='forgot-remem'>
+          <div className='remem'><input type='checkbox'></input>
+          Remember me</div>
           <a href='#' > Forgot password?</a>
         </div>
 
