@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
+
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  font-optical-sizing: auto; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('./Background/4428788.jpg');
+  background-position: center;
+}
+
+.warp h1 {
+font-family: "Black Ops One", system-ui;
+text-align: center;
+margin-bottom: 75px;
+margin-top: 110px;
+font-size: 100px;
+color: rgb(65, 33, 33);
+}
+
+.warp-box {
+  margin-left: 25%;
+  border: 2px solid rgb(155, 123, 93);
+  border-radius: 10px;
+  width: 500px;
+  height: 450px;
+  backdrop-filter: blur(10px);
+}
+
+.warp h2 {
+  font-family: "Archivo Neue", sans-serif;
+  text-align: center;
+  font-size: 42px;
+  margin-top: 35px;
+  color: rgb(134, 76, 22);
+  font-style: bold;
+}
+
+.warp .inputbox {
+  margin-left: 16%;
+  margin-top: 30px;
+  position: relative ;
+  width: 80%;
+  height: 30px;
+}
+
+.warp .inputbox input {
+  font-family: "Cabin", sans-serif;
+  background: transparent;
+  width: 80%;
+  height: 120%;
+  border: none;
+  outline: none;
+  border: 1px solid rgb(155, 123, 93);
+  border-radius: 40px ;
+  font-size: 16px;
+}
+
+.warp .inputbox input::placeholder {
+  font-family: "Cabin", sans-serif;
+  color: rgb(155, 123, 93);
+  position: relative;
+  left: 15px;
+}
+
+.warp .inputbox .icon {
+  position: absolute;
+  left: 290px;
+  top: 29%
+
+}
