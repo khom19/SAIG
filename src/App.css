@@ -29,7 +29,7 @@ color: rgb(65, 33, 33);
 
 .warp-box {
   margin-left: 25%;
-  border: 2px solid rgb(155, 123, 93);
+  border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 500px;
   height: 450px;
@@ -41,16 +41,16 @@ color: rgb(65, 33, 33);
   text-align: center;
   font-size: 42px;
   margin-top: 35px;
-  color: rgb(134, 76, 22);
+  color: rgb(65, 33, 33);
   font-style: bold;
 }
 
 .warp .inputbox {
-  margin-left: 16%;
+  margin-left: 18%;
   margin-top: 30px;
   position: relative ;
   width: 80%;
-  height: 30px;
+  height: 40px;
 }
 
 .warp .inputbox input {
@@ -60,31 +60,87 @@ color: rgb(65, 33, 33);
   height: 120%;
   border: none;
   outline: none;
-  border: 1px solid rgb(155, 123, 93);
+  border: 1px solid rgb(134, 76, 22);
   border-radius: 40px ;
-  font-size: 16px;
+  font-size: 18px;
   padding-left: 20px;
   padding-right: 35px;
 }
 
 .warp .inputbox input::placeholder {
   font-family: "Cabin", sans-serif;
-  color: rgb(155, 123, 93);
+  color: rgb(134, 76, 22);
   position: relative;
 }
 
 .warp .inputbox .icon {
   position: absolute;
-  left: 290px;
-  top: 29%
-
+  left: 280px;
+  top: 30%;
+  width: 25px;
+  height: 20px;
+  color: rgb(134, 76, 22);
 }
 
 .forgot-remem {
   display: flex;
   justify-content: space-between;
-  font-size: 16px;
-  margin-top: 25px;
-  margin-left: 16%;
-  margin-right: 19%;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-left: 18%;
+  margin-right: 20%;
+}
+
+.forgot-remem a {
+  font-family: "Archivo Neue", sans-serif;
+  color: rgb(134, 76, 22);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.forgot-remem .remem {
+  font-family: "Archivo Neue", sans-serif;
+  font-size: 17px;
+  color: rgb(65, 33, 33);
+}
+
+.forgot-remem .remem input[type=checkbox] {
+  margin-right: 6px;
+  line-height: normal;
+  height: 13px;
+  width: 13px;
+  accent-color: rgb(155, 123, 93) ;
+}
+
+.singIn button[type='submit'] {
+  font-family: "Archivo Neue", sans-serif;
+  font-weight: 700;
+  margin-top: 20px;
+  border-radius: 40px;
+  border: 1px solid rgb(134, 76, 22);
+  outline: none;
+  width: 65%;
+  height: 45px;
+  background: rgb(241, 237, 211);
+  font-size: 22px;
+  margin-left: 18%;
+  color: rgb(134, 76, 22);
+  font-style: bold;
+  cursor: pointer ;
+}
+
+.account {
+  font-family: "Archivo Neue", sans-serif;
+  font-size: 14.5px;
+  text-align: center;
+  margin-top: 20px;
+  color: rgb(65, 33, 33);
+  
+}
+
+.account a {
+  color: rgb(134, 76, 22) ;
+  font-weight: 700;
+  margin-left: 5px;
+  text-decoration: none;
 }

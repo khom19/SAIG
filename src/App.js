@@ -19,12 +19,14 @@ function App() {
         </div>
 
         <div className='forgot-remem'>
-          <div className='remem'><input type='checkbox'></input>
-          Remember me</div>
+          <label className='remem'>
+            <input type='checkbox' ></input>
+            Remember me
+          </label>
           <a href='#' > Forgot password?</a>
         </div>
 
-        <div className='remember'>
+        <div className='singIn'>
           <button type='submit'>Sing in</button>
         </div>
 
