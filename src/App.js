@@ -1,5 +1,6 @@
 import './App.css';
 import { FaUser , FaLock } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
             <input type='checkbox' ></input>
             Remember me
           </label>
-          <a href='#' > Forgot password?</a>
+          <a href='' > Forgot password?</a>
         </div>
 
         <div className='singIn'>
