@@ -12,9 +12,10 @@ class Forgot extends Component {
                     <nav><Link to='/'><IoChevronBack /></Link></nav>
                 </div>
                 <div className='email'>Reset password</div>
+                <p className='word'>Enter your email</p>
 
                 <div className='emailbox'>
-                    <input type='text' placeholder='email'></input>
+                    <input type='text' placeholder='Email'></input>
                     <MdEmail className='mailIcon' />
                 </div>
 

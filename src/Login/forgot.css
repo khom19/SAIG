@@ -3,7 +3,7 @@
 
 .warpForgot {
   margin-left: 30px;
-  margin-top: 58%;
+  margin-top: 50%;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 500px;
@@ -16,14 +16,22 @@
   font-family: "Archivo Neue", sans-serif;
   text-align: center;
   font-size: 42px;
-  margin-top: 33px;
+  margin-top: 10px;
   color: rgb(65, 33, 33);
   font-weight: 600;
 }
 
+.warpForgot .word {
+  font-family: "Archivo Neue", sans-serif;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: rgb(65, 33, 33);  
+}
+
 .warpForgot .emailbox {
   margin-left: 18%;
-  margin-top: 40px;
+  margin-top: 10px;
   position: relative ;
   width: 80%;
   height: 40px;

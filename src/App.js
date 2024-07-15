@@ -30,11 +30,11 @@ class App extends Component {
         </div>
 
         <div className='singIn'>
-          <button type='submit'>Sing in</button>
+          <button type='submit'>Sign in</button>
         </div>
 
         <div className='account'>
-        <nav>Don't have an account?<Link to='/signUp'>Sing Up</Link></nav>
+        <nav>Don't have an account?<Link to='/signUp'>Sign Up</Link></nav>
         </div>
       </div>
     </div>
