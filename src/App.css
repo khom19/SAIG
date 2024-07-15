@@ -22,14 +22,14 @@ body {
 .warp h1 {
 font-family: "Black Ops One", system-ui;
 text-align: center;
-margin-top: 10%;
+margin-top: 8vh;
 margin-bottom: 5% ;
 font-size: 10vh;
 color: rgb(65, 33, 33);
 }
 
 .warp-box {
-  margin-left: 17vw;
+  margin-left:13dvw;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 500px;
