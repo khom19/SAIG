@@ -24,12 +24,12 @@ font-family: "Black Ops One", system-ui;
 text-align: center;
 margin-top: 10%;
 margin-bottom: 5% ;
-font-size: 100px;
+font-size: 10vh;
 color: rgb(65, 33, 33);
 }
 
 .warp-box {
-  margin-left: 30%;
+  margin-left: 34vh;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 500px;
