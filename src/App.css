@@ -29,7 +29,7 @@ color: rgb(65, 33, 33);
 }
 
 .warp-box {
-  margin-left: 25%;
+  margin-left: 30%;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 500px;
@@ -66,7 +66,8 @@ color: rgb(65, 33, 33);
   border-radius: 40px ;
   font-size: 18px;
   padding-left: 20px;
-  padding-right: 35px;
+  padding-right: 38px;
+  color: rgb(65, 33, 33);
 }
 
 .warp .inputbox input::placeholder {
