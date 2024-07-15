@@ -17,7 +17,7 @@ class App extends Component {
           <FaUser className='icon'/>
         </div>
         <div className='inputbox'>
-          <input type='text' placeholder='Password' required></input>
+          <input type='password' placeholder='Password' required></input>
           <FaLock className='icon'/>
         </div>
 
