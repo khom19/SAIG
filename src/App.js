@@ -2,15 +2,16 @@ import './App.css';
 import React , { Component } from 'react';
 import { FaUser , FaLock } from "react-icons/fa";
 import './index' ;
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
-<div className='phone'>
-  <div className='rotate'>Please rotate your phone!</div>
-</div>
+function myfunction() {
+  <Link to={'/Home'}></Link>
+}
 
 class App extends Component {
   render () {
   return (
+  <section className='background'>
     <div className='warp'>
       <h1>Welcome to Board-Go</h1>
       <div className='warp-box'>
@@ -41,7 +42,8 @@ class App extends Component {
         <nav>Don't have an account?<Link to='/SignUp'>Sign Up</Link></nav>
         </div>
       </div>
-    </div>
+    </div> 
+  </section>   
     );
   }
 } 

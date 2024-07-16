@@ -7,6 +7,7 @@ import { MdEmail } from "react-icons/md";
 class Forgot extends Component {
     render() {
         return(
+        <section className='forgotbackground'>   
             <div className='warpForgot'>
                 <div className='back'>
                     <nav><Link to='/'><IoChevronBack /></Link></nav>
@@ -23,6 +24,7 @@ class Forgot extends Component {
                     <button type='submit'>Submit</button>
                 </div>
             </div>
+        </section> 
         )
     }
 }

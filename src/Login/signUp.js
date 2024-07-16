@@ -8,6 +8,7 @@ import { FaUser , FaLock } from "react-icons/fa";
 class SignUp extends Component {
     render() {
         return(
+        <section className='signupbackground'>
             <div className='warpSingUp'>
                 <div className='back'>
                     <nav><Link to='/'><IoChevronBack /></Link></nav>
@@ -34,6 +35,7 @@ class SignUp extends Component {
                     <button type='submit'>Sign up</button>
                 </div>
             </div>
+        </section>
         )
     }
 }

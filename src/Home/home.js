@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { FaUser } from "react-icons/fa";
+import './home.css'
 
 class Home extends Component {
     render() {
