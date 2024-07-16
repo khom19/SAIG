@@ -2,11 +2,7 @@ import './App.css';
 import React , { Component } from 'react';
 import { FaUser , FaLock } from "react-icons/fa";
 import './index' ;
-import { Link, Route } from 'react-router-dom';
-
-function myfunction() {
-  <Link to={'/Home'}></Link>
-}
+import { Link } from 'react-router-dom';
 
 class App extends Component {
   render () {
