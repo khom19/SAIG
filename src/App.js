@@ -30,7 +30,7 @@ class App extends Component {
             <input type='checkbox' ></input>
             Remember me
           </label>
-          <nav><Link to='/forgot'>Forgot password?</Link></nav>
+          <nav><Link to='/Forgot'>Forgot password?</Link></nav>
         </div>
 
         <div className='singIn'>
@@ -38,7 +38,7 @@ class App extends Component {
         </div>
 
         <div className='account'>
-        <nav>Don't have an account?<Link to='/signUp'>Sign Up</Link></nav>
+        <nav>Don't have an account?<Link to='/SignUp'>Sign Up</Link></nav>
         </div>
       </div>
     </div>
