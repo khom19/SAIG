@@ -156,6 +156,7 @@ color: rgb(65, 33, 33);
     align-items: center;
     flex-direction: column;
     background-color: black;
+    background-image: none;
   }
 }
 
