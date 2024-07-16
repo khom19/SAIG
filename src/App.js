@@ -3,7 +3,10 @@ import React , { Component } from 'react';
 import { FaUser , FaLock } from "react-icons/fa";
 import './index' ;
 import { Link } from 'react-router-dom';
-import Media from 'react-Media'
+
+<div className='phone'>
+  <div className='rotate'>Please rotate your phone!</div>
+</div>
 
 class App extends Component {
   render () {

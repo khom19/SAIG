@@ -149,3 +149,18 @@ color: rgb(65, 33, 33);
   text-decoration: none;
 }
 
+@media all and (max-device-width: 812px) and (orientation: portrait){
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: black;
+  }
+}
+
+@media only screen and (max-device-width: 812px) and (orientation: portrait){
+ .phone , .rotate {
+  display: block;
+ }
+}
