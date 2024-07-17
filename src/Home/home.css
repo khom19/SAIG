@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
 .homebackground {
     display: flex;
     height: 100vh;
@@ -9,26 +11,41 @@
 
 .menu {
     display: flex;
-    flex-direction: row-reverse;
-    margin-left: 92%;
-    height: 100%;
-    background-color: azure;
+    gap: 20px;
+    flex-direction: row;
+    width: 100vw;
+    height: 8vh;
+    justify-content: flex-end;
+    background-color: rgb(65, 33, 33);
+    border-bottom: 4px solid rgb(155, 123, 93) ;
+}
+
+.menu p{
+    font-family: "Black Ops One", system-ui;
+    margin-top: 18px ;
+    margin-right: 20%;
+    font-size: 35px;
+    color: rgb(241, 237, 211);
 }
 
 .history .icon {
-    margin: 17px 6px 0 6px;
+    margin-top: 28px ;
     width: 25px;
     height: 25px;
+    color: rgb(241, 237, 211);
 }
 
 .payment .icon {
-    margin: 13px 6px 0 6px;
+    margin-top: 24px ;
     width: 30px;
     height: 30px;
+    color: rgb(241, 237, 211);
 }
 
 .profile .icon {
-    margin: 15px 6px 0 6px;
+    margin-right: 2vw;
+    margin-top: 26px ;
     width: 25px;
     height: 25px;
+    color: rgb(241, 237, 211);
 }
