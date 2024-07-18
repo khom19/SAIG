@@ -7,6 +7,8 @@ import Forgot from './Login/forgot';
 import App from './App';
 import SignUp from './Login/signUp';
 import Home from './Home/home';
+import History from './Home/history';
+import Payment from './Home/payment';
 
 const router = createBrowserRouter ([
 { 
@@ -24,7 +26,15 @@ const router = createBrowserRouter ([
 {
   path: "Home",
   element: <Home />
-}
+},
+{
+  path: "History",
+  element: <History />
+},
+{
+  path: "Payment",
+  element: <Payment />
+},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

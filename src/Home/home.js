@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { Component } from 'react';
+import React from 'react';
 import { FaUser , FaHistory } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 import './home.css'
@@ -11,8 +11,8 @@ function Home() {
             <div className='menu'>
                 <p>Board-Go</p>
                 <SearchBar />
-                <div className='payment'><MdPayment className='icon' /></div>
-                <div className='history'><FaHistory className='icon' /></div>
+                <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
+                <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><FaUser className='icon'/></div>
             </div>
         </section>   

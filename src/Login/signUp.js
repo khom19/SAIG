@@ -13,14 +13,25 @@ const [password , setPassword] = useState('') ;
 const [confirmpassword , setConfirmPassword] = useState('') ;
 
 const handleSubmit = (e) => {
-    e.preventDefault();
-    if(password == confirmpassword ){
-        const userinfo = { email , username , password , confirmpassword } ;
-        console.log(userinfo) ;
+    if(password == confirmpassword && password.length >= 8){
+        const userInfo = { email , username , password } ;
+        console.log(userInfo) ;
+        e.preventDefault();
+        alert("Success") ;
+    }else if(password.length < 8 ){
+        alert("Passwords must be at least 8 characters.") ;
+        e.preventDefault();
     }else{
-        alert("Passwords are not match") ;
+        alert("Passwords are not match.") ;
+        e.preventDefault();
     }
 }
+
+//const express = require('express')
+//const app = express()
+
+//app.get
+
         return(
     <section className='signupbackground'>
         <form onSubmit={(e) => handleSubmit(e)}>
