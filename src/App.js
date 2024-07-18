@@ -4,8 +4,7 @@ import { FaUser , FaLock } from "react-icons/fa";
 import './index' ;
 import { Link } from 'react-router-dom';
 
-class App extends Component {
-  render () {
+function App() {
   return (
   <section className='background'>
     <div className='warp'>
@@ -42,6 +41,5 @@ class App extends Component {
   </section>   
     );
   }
-} 
 
 export default App;

@@ -4,8 +4,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { MdEmail } from "react-icons/md";
 
-class Forgot extends Component {
-    render() {
+function Forgot() {
         return(
         <section className='forgotbackground'>   
             <div className='warpForgot'>
@@ -27,6 +26,5 @@ class Forgot extends Component {
         </section> 
         )
     }
-}
 
 export default Forgot ;

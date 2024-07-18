@@ -5,8 +5,7 @@ import { MdPayment } from "react-icons/md";
 import './home.css'
 import SearchBar from './searchbar';
 
-class Home extends Component {
-    render() {
+function Home() {
         return(
         <section className='homebackground'>
             <div className='menu'>
@@ -19,6 +18,5 @@ class Home extends Component {
         </section>   
         ) 
     }
-}
 
 export default Home ;
