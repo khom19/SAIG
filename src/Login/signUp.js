@@ -16,14 +16,7 @@ const [confirmpassword , setConfirmPassword] = useState('') ;
 const handleSubmit = async(e) => {
     if(password == confirmpassword && password.length >= 8){
         const userInfo = { email , username , password } ;
-        try {
-            await axios.post("http://localhost:8000/",{
-                userInfo
-                })
-            }
-        catch(e){
-                console.log(e);
-            }
+        console.log(userInfo)
         e.preventDefault();
         alert("Success") ;
     }else if(password.length < 8 ){
