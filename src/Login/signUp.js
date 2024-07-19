@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock } from "react-icons/fa";
+import axios from 'axios';
 
 function SignUp(){
 
@@ -12,10 +13,17 @@ const [username , setUsername] = useState('') ;
 const [password , setPassword] = useState('') ;
 const [confirmpassword , setConfirmPassword] = useState('') ;
 
-const handleSubmit = (e) => {
+const handleSubmit = async(e) => {
     if(password == confirmpassword && password.length >= 8){
         const userInfo = { email , username , password } ;
-        console.log(userInfo) ;
+        try {
+            await axios.post("http://localhost:8000/",{
+                userInfo
+                })
+            }
+        catch(e){
+                console.log(e);
+            }
         e.preventDefault();
         alert("Success") ;
     }else if(password.length < 8 ){
@@ -26,11 +34,6 @@ const handleSubmit = (e) => {
         e.preventDefault();
     }
 }
-
-//const express = require('express')
-//const app = express()
-
-//app.get
 
         return(
     <section className='signupbackground'>
