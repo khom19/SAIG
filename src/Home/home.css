@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 .homebackground {
-    display: flex;
     height: 100vh;
     font-optical-sizing: auto; 
     background-color: rgb(241, 237, 211) ;
@@ -22,10 +21,11 @@
 
 .menu p{
     font-family: "Black Ops One", system-ui;
-    margin-top: 18px ;
-    margin-right: 20%;
+    margin-top: 16px ;
+    margin-right: 20vw;
     font-size: 35px;
     color: rgb(241, 237, 211);
+    white-space: nowrap;
 }
 
 .history .icon {

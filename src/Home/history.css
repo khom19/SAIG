@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 .historybackground {
-    display: flex;
     height: 100vh;
     font-optical-sizing: auto; 
     background-color: rgb(241, 237, 211) ;
@@ -28,4 +27,11 @@
     margin-right: 45vw;
     color: rgb(241, 237, 211);
     font-weight: 300;
+}
+
+.historybackground .back nav {
+    margin-top: 18px;
+    width: 20vw;
+    height: 20vh;
+    margin-right: 20vw;
 }

@@ -1,5 +1,5 @@
 import './App.css';
-import React , { Component } from 'react';
+import React from 'react';
 import { FaUser , FaLock } from "react-icons/fa";
 import './index' ;
 import { Link } from 'react-router-dom';

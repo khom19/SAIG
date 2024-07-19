@@ -9,7 +9,7 @@ function Forgot() {
         <section className='forgotbackground'>   
             <div className='warpForgot'>
                 <div className='back'>
-                    <nav><Link to='/'><IoChevronBack /></Link></nav>
+                    <nav><Link to='/'><IoChevronBack size={30}/></Link></nav>
                 </div>
                 <div className='email'>Reset password</div>
                 <p className='word'>Enter your email</p>
