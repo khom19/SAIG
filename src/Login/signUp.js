@@ -3,39 +3,95 @@ import './signUp.css'
 import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
-import { FaUser , FaLock } from "react-icons/fa";
+import { FaUser , FaLock , FaKey  } from "react-icons/fa";
+import './userdetail';
 
-function SignUp(){
+export default function SignUp(){
 
 const [email , setEmail] = useState('') ;
 const [username , setUsername] = useState('') ;
 const [password , setPassword] = useState('') ;
 const [confirmpassword , setConfirmPassword] = useState('') ;
+const [UserType , setUsertype] = useState('');
+const [secretkey , setSecret] = useState('') ;
 
 const handleSubmit = (e) => {
-    if(password == confirmpassword && password.length >= 8){
-        const userInfo = { email , username , password } ;
-        console.log(userInfo) ;
-        e.preventDefault();
-        alert("Success") ;
+
+    if(UserType == "admin" && secretkey != "admin123"){
+        e.preventDefault() ;
+        alert("Invalid Key") ;
+    }else if(confirmpassword != password){
+        alert("Passwords do not match") ;
+        e.preventDefault() ;
     }else if(password.length < 8 ){
-        alert("Passwords must be at least 8 characters.") ;
-        e.preventDefault();
+        alert("Password must be at least 8 characters") ;
+        e.preventDefault() ;
     }else{
-        alert("Passwords are not match.") ;
-        e.preventDefault();
-    }
-}
+        e.preventDefault() ;
+
+        console.log(email , username , password , confirmpassword);
+        fetch("http://localhost:5000/register", {
+            method: "POST" ,
+            crossDomain: true ,
+            headers: {
+                "Content-Type": "application/json" ,
+                Accept: "application/json" ,
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                email ,
+                username ,
+                password ,
+                UserType ,
+            }) ,
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data , "userRegister") ;
+                if (data.status == "ok") {
+                    alert("Success") ;
+                }else{
+                    alert("Something went wrong");
+                }
+            }) ;
+        }
+    } ;
 
         return(
-    <section className='signupbackground'>
-        <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={handleSubmit}>
+        <section className='signupbackground'>
             <div className='warpSingUp'>
                 <div className='back'>
                     <nav><Link to='/'><IoChevronBack size={30}/></Link></nav>
                 </div>
                 <div className='signup'>Sign up</div>
                 <p className='word'>Create your account</p>
+                <div className='role'>
+                    <input 
+                    className='inputU'
+                    type='radio'
+                    name='UserType'
+                    value='user'
+                    onChange={(e) => setUsertype(e.target.value)} />
+                    <div className='user'>User</div>
+                    <input 
+                    className='inputA'
+                    type='radio'
+                    name='UserType'
+                    value='admin'
+                    onChange={(e) => setUsertype(e.target.value)} />
+                    <div className='admin'>Admin</div>
+                </div>
+                {UserType == 'admin'?
+                <div className='secretkey'>
+                    <input type='text' 
+                    placeholder='Key' 
+                    required 
+                    value={secretkey}
+                    onChange={(e) => setSecret(e.target.value)}>
+                    </input>
+                    <FaKey className='icon'/>
+                </div>:null}
                 <div className='email'>
                     <input type='email' 
                     placeholder='Email'
@@ -77,9 +133,7 @@ const handleSubmit = (e) => {
                     <button type='submit' >Sign up</button>
                 </div>
             </div>
-        </form>
-    </section>
+        </section>
+    </form>
         )
     }
-
-export default SignUp ;

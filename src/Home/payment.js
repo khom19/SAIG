@@ -11,7 +11,7 @@ function Payment() {
                 <h2 className="head">Payment</h2>
             </div>
             <div className="promptPay"></div>
-            <p>Fake PromptPay</p>
+            <p className="fake">Fake PromptPay</p>
         </section>
     )
 }
