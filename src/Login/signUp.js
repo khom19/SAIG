@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock , FaKey  } from "react-icons/fa";
-import './userdetail';
+
+export const users = []
 
 export default function SignUp(){
 
@@ -30,30 +31,7 @@ const handleSubmit = (e) => {
         e.preventDefault() ;
 
         console.log(email , username , password , confirmpassword);
-        fetch("http://localhost:5000/register", {
-            method: "POST" ,
-            crossDomain: true ,
-            headers: {
-                "Content-Type": "application/json" ,
-                Accept: "application/json" ,
-                "Access-Control-Allow-Origin": "*",
-            },
-            body: JSON.stringify({
-                email ,
-                username ,
-                password ,
-                UserType ,
-            }) ,
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data , "userRegister") ;
-                if (data.status == "ok") {
-                    alert("Success") ;
-                }else{
-                    alert("Something went wrong");
-                }
-            }) ;
+        users.push({email , username , password}) ;
         }
     } ;
 

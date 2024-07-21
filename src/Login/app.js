@@ -1,6 +1,7 @@
 const express = require('express') ;
 const app = express();
-const mongoose = require('mongoose') ;
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongoose = require('mongoose')
 app.use(express.json()) ;
 const cors = require('cors') ;
 app.use(cors()) ;
@@ -10,14 +11,26 @@ app.use(express.urlencoded({extended:false})) ;
 
 const mongo = "mongodb+srv://khom2548:khom192548@saig.g9scmye.mongodb.net/?retryWrites=true&w=majority&appName=SAIG";
 
-mongoose
-    .connect(mongo , {
-        useNewUrlParser : true ,
-    })
-    .then(() => {
-        console.log("Connected") ;
-    })
-    .catch((e) => console.log(e)) ;
+const client = new MongoClient(mongo, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
+
+  async function run() {
+    try {
+      // Connect the client to the server	(optional starting in v4.7)
+      await client.connect();
+      // Send a ping to confirm a successful connection
+      await client.db("admin").command({ ping: 1 });
+    } finally {
+      // Ensures that the client will close when you finish/error
+      console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    }
+  }
+  run().catch(console.dir);
 
     require("./userdetail.js") ;
 
