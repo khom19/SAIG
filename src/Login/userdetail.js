@@ -1,3 +1,5 @@
+import './Login/app.js'
+
 const mongoose = require("mongoose") ;
 
 const UserDetailScehma = new mongoose.Schema(

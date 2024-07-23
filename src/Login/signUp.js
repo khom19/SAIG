@@ -5,7 +5,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock , FaKey  } from "react-icons/fa";
 
-export const users = []
+export let users = []
 
 export default function SignUp(){
 

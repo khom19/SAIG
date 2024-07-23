@@ -140,7 +140,7 @@
   }
   
   .role .inputU {
-    margin-left: 8.5vw;
+    margin-left: 45%;
   }
 
   .role input { 
@@ -154,7 +154,7 @@
     font-family: "Archivo Neue", sans-serif;
     font-size: 16px;
     color: rgb(65, 33, 33);
-    margin-top: 1px ;
+    margin-top: 0.15vw ;
     margin-left: 3px;
   }
 
@@ -162,7 +162,7 @@
     font-family: "Archivo Neue", sans-serif;
     font-size: 16px;
     color: rgb(65, 33, 33);
-    margin-top: 1px ;
+    margin-top: 0.15vw ;
     margin-left: 3px;
   }
 

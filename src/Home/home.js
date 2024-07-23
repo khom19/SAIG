@@ -67,9 +67,9 @@ function Home() {
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><FaUser className='icon'/></div>
             </div>
-            {boardGame.map((name) => {
+            {boardGame.map((name , index) => {
                 return(
-                        console.log(name)
+                        <div boardname={name} key={index}>{boardname}</div>
                     )
                 }
             )
