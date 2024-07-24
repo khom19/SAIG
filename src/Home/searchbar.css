@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
 .search .searchinput {
-    margin-right: 28vw;
+    margin-right: 26vw;
     display:flex ;
 }
 
 .search .searchinput input{
     font-family: "Cabin", sans-serif;
-    margin-top: 18px;
+    align-items: center;
     height: 40px;
     width: 27vw;
     border: 2px solid rgb(155, 123, 93);
@@ -27,7 +27,6 @@
 }
 
 .search .searchicon {
-    margin-top: 18px;
     height: 40px;
     width: 3vw;
     background-color: rgb(241, 237, 211);
