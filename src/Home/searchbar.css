@@ -8,7 +8,7 @@
 .search .searchinput input{
     font-family: "Cabin", sans-serif;
     align-items: center;
-    height: 40px;
+    height: 45px;
     width: 27vw;
     border: 2px solid rgb(155, 123, 93);
     border-radius: 40px ;
@@ -27,7 +27,7 @@
 }
 
 .search .searchicon {
-    height: 40px;
+    height: 45px;
     width: 3vw;
     background-color: rgb(241, 237, 211);
     border: 2px solid rgb(155, 123, 93);

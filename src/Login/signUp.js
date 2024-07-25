@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock , FaKey  } from "react-icons/fa";
-
-export let users = []
+const collectusers = require('./schema/collectuser') ;
 
 export default function SignUp(){
 
@@ -31,7 +30,12 @@ const handleSubmit = (e) => {
         e.preventDefault() ;
 
         console.log(email , username , password , confirmpassword);
-        users.push({email , username , password}) ;
+            const userInfo = new collectusers({
+            email ,
+            username ,
+            password ,
+            });
+            userInfo.save();
         }
     } ;
 
