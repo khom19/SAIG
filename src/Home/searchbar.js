@@ -6,10 +6,16 @@ function SearchBar({placeholder , data}) {
     return(
         <div className='search'>
             <div className='searchinput'>
-                <input type='text' placeholder="Search" />
+                <input type='text' placeholder={placeholder} />
                 <div className='searchicon'><FaSearch className="icon"/></div>
             </div>
-            <div className='result'></div>
+            <div className='result'>
+                {data.map((dataname , index) => {
+                    return(
+                        <a className="searchData"><div className="text">{dataname.name}</div></a>
+                    )
+                })}
+            </div>
         </div>
     )
 }

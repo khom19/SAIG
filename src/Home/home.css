@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
 .homebackground {
-    height: 100%;
+    height: auto;
     font-optical-sizing: auto; 
     background-color: rgb(241, 237, 211) ;
     background-position: center;
     background-attachment: fixed;
+    padding-bottom: 2.5%;
 }
 
 .menu {
@@ -47,16 +49,60 @@
     color: rgb(241, 237, 211);
 }
 
-.name {
-    width: 13vw;
-    height: 8.5vw;
-    background-color: aliceblue;
+.warp_home {
+    width: 14.5vw;
+    height: 9vw;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .display {
-    margin-left: 1vw;
-    margin-top: 10vw;
+    margin-left: 2.8vw ;
+    margin-top: 3vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 2vw 1vw;
+    gap: 2vw 1.5vw;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(65, 33, 33) ;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 2px;
+}
+
+.info {
+    display: flex;
+    height: 3vh;
+    align-items:center ;
+    justify-content: center;
+    gap: 0 5px ;
+    color: rgb(241, 237, 211);
+    background-color:rgb(65, 33, 33);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-top: -4px ;
+}
+
+.board_name {
+    width: 14.5vw;
+    height: 20.4vh;
+    border-radius: 20px;
+}
+
+.board_name:hover {
+    box-shadow: 0 0 2px 1px rgb(65, 33, 33);
+}
+
+.name {
+    font-family: "Cabin", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.players {
+    font-family: "Cabin", sans-serif;
+    font-size: 14px;
 }
