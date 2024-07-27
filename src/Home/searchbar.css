@@ -6,20 +6,18 @@
 
 .search .searchinput {
     margin-right: 25vw;
-    margin-top: 29%;
     display:flex ;
 }
 
 .search .searchinput input{
     font-family: "Cabin", sans-serif;
-    align-items: center;
     height: 42.5px;
     width: 27vw;
     border: 2px solid rgb(155, 123, 93);
     border-radius: 40px ;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    padding-left: 15px;
+    padding: 15px;
     font-size: 18px;
     color:rgb(65, 33, 33) ;
     border-right: 2px solid rgb(155, 123, 93);
@@ -74,4 +72,8 @@
 
 .result::-webkit-scrollbar {
     display: none;
+}
+
+.searchData:hover {
+    background-color: lightgray ;
 }

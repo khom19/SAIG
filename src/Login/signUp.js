@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
             username ,
             password ,
             });
-            userInfo.save();
+            userInfo.save(userInfo);
         }
     } ;
 
