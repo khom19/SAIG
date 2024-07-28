@@ -19,7 +19,10 @@
     justify-content: flex-end;
     background-color: rgb(65, 33, 33);
     border-bottom: 4px solid rgb(155, 123, 93) ;
-    align-items: center;
+}
+
+.search {
+    margin-top: 1.25%;
 }
 
 .menu p{
@@ -28,18 +31,21 @@
     font-size: 2.25vw;
     color: rgb(241, 237, 211);
     white-space: nowrap;
+    align-self: center;
 }
 
 .history .icon {
     width: 1.5vw;
     height: 1.5vw;
     color: rgb(241, 237, 211);
+    margin-top: 115% ;
 }
 
 .payment .icon {
     width: 1.9vw;
     height: 1.9vw;
     color: rgb(241, 237, 211);
+    margin-top: 80% ;
 }
 
 .profile .icon {
@@ -47,6 +53,7 @@
     width: 1.4vw;
     height: 1.4vw;
     color: rgb(241, 237, 211);
+    margin-top: 50% ;
 }
 
 .warp_home {

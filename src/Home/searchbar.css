@@ -40,10 +40,17 @@
 }
 
 .search .searchicon .icon {
-    width: 22px;
-    height: 22px;
+    width: 1.25vw;
+    height: 1.25vw;
     margin-left: 25%;
     margin-top: 13%;
+}
+
+.closeicon {
+    width: 1.9vw;
+    height: 1.9vw;
+    margin-top: 2%;
+    cursor: pointer;
 }
 
 .result {

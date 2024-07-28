@@ -62,7 +62,7 @@ function Home() {
         <section className='homebackground'>
             <div className='menu'>
                 <p>Board-Go</p>
-                <SearchBar placeholder={"Search"} data={boardGame}/>
+                <SearchBar placeholder={"Search"} data={boardGame} className='search'/>
                 <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><FaUser className='icon'/></div>
@@ -70,12 +70,18 @@ function Home() {
             <div className='display'>{boardGame.map((board , index) => {
                 return(
                     <div key={index} className='board_name'>
-                        <div className='warp_home'><img className='picture' src={board.pic}/><div className='info'><div className='name'>{board.name}</div><div className='players'>( {board.players} players )</div></div></div>
+                        <div className='warp_home'>
+                            <img className='picture' src={board.pic}/>
+                            <div className='info'>
+                                <div className='name'>{board.name}</div>
+                                <div className='players'>( {board.players} players )</div>
+                            </div>
+                        </div>
                     </div>
                     )
                 }
-            )
-        }</div>
+            )}
+            </div>
         </section>   
         ) 
     }
