@@ -24,6 +24,12 @@ function SearchBar({placeholder , data}) {
             setFilterData([]);
             setWordsEnter("") ;
         } ;
+
+        const handleClick = (value) => {
+            console.log(value) ;
+            setWordsEnter(value);
+            setFilterData([]) ;
+        }
     
     return(
         <div className='search'>
@@ -36,7 +42,7 @@ function SearchBar({placeholder , data}) {
             <div className='result'>
                 {filter.slice(0,20).map((dataname , index) => {
                     return(
-                        <a className="searchData"><div className="text">{dataname.name}</div></a>
+                        <a className="searchData" onClick={() => handleClick(dataname.name)}><div className="text">{dataname.name}</div></a>
                     )
                 })}
             </div>

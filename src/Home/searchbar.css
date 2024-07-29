@@ -11,26 +11,26 @@
 
 .search .searchinput input{
     font-family: "Cabin", sans-serif;
-    height: 42.5px;
+    height: 2.25vw;
     width: 27vw;
     border: 2px solid rgb(155, 123, 93);
     border-radius: 40px ;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     padding: 15px;
-    font-size: 18px;
+    font-size: 1vw;
     color:rgb(65, 33, 33) ;
     border-right: 2px solid rgb(155, 123, 93);
 }
 
 .search .searchinput input::placeholder {
     font-family: "Cabin", sans-serif;
-    font-size: 18px;
+    font-size: 1vw;
     color: rgb(155, 123, 93);
 }
 
 .search .searchicon {
-    height: 42.5px;
+    height: 2.25vw;
     width: 3vw;
     background-color: rgb(241, 237, 211);
     border: 2px solid rgb(155, 123, 93);

@@ -105,11 +105,11 @@
 
 .name {
     font-family: "Cabin", sans-serif;
-    font-size: 18px;
+    font-size: 0.9vw;
     font-weight: 500;
 }
 
 .players {
     font-family: "Cabin", sans-serif;
-    font-size: 14px;
+    font-size: 0.8vw;
 }
