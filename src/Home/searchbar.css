@@ -30,7 +30,7 @@
 }
 
 .search .searchicon {
-    height: 2.25vw;
+    height: auto;
     width: 3vw;
     background-color: rgb(241, 237, 211);
     border: 2px solid rgb(155, 123, 93);
@@ -44,6 +44,7 @@
     height: 1.25vw;
     margin-left: 25%;
     margin-top: 13%;
+    cursor: pointer;
 }
 
 .closeicon {

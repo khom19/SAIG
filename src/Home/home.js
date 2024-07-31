@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React , {useState} from 'react';
 import { FaUser , FaHistory } from "react-icons/fa";
 import { MdDescription, MdPayment } from "react-icons/md";
 import './home.css'
-import SearchBar from './searchbar';
+import './searchbar.css'
+import { FaSearch } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
 
 export const boardGame = [
     {name:"Candy Land" , players:"2-4" , description:"Candy Land is a racing game perfect for children of all ages. There is no strategy involved; you are only required to follow simple directions." , pic:"https://m.media-amazon.com/images/I/91yUG40gv0L._AC_SL1500_.jpg"},
@@ -57,12 +59,70 @@ export const boardGame = [
     {name:"Terra Mystica" , players:"2-5" , description:"You don’t need luck on your side for this game, but you will need strategy. You’ll be governing 14 groups while attempting to grow your homeland." , pic:"https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__opengraph/img/RKbh4b9b8YBmEsBtJu8zPN4vM6M=/0x0:1427x749/fit-in/1200x630/filters:strip_icc()/pic5375624.jpg"},
     {name:"Dominion" , players:"2-4" , description:"Players take the role of monarchs and compete against each other to build the most developed kingdom represented by their individual deck of cards." , pic:"https://img.pastemagazine.com/wp-content/uploads/2022/06/21074637/dominion-card-game-main.jpg"}]
 
+    let searchDataItem = [] ;
+
 function Home() {
+
+    const [filter , setFilterData] = useState([]) ;
+    const [wordsEnter , setWordsEnter] = useState("") ;
+
+    const handleFilter = (event) => {
+        const searchWord = event.target.value ;
+        setWordsEnter(searchWord) ;
+        const newFilter = boardGame.filter((value) => {
+            return value.name.toLowerCase().includes(searchWord.toLowerCase()) ;
+        }) ;
+        if(searchWord === ''){
+            setFilterData([]);
+        }else{
+            setFilterData(newFilter) ;
+        }
+    } ;
+
+    const clearInput = () => {
+        setFilterData([]);
+        setWordsEnter("") ;
+    } ;
+
+    const handleClick = (value) => {
+        console.log(value) ;
+        setWordsEnter(value);
+        setFilterData([]) ;
+    }
+
+    const goSearch = () => {
+        const holdData = wordsEnter ;
+        let index ;
+        for (let i = 0; i < boardGame.length; i++) {
+            if(holdData == boardGame[i].name){
+                index = i ;
+            }
+        }
+        searchDataItem[0] = index ;
+        console.log(searchDataItem) ;
+    }
+
+
         return(
         <section className='homebackground'>
             <div className='menu'>
                 <p>Board-Go</p>
-                <SearchBar placeholder={"Search"} data={boardGame} className='search'/>
+                <div className='search'>
+            <div className='searchinput'>
+                <input type='text' placeholder="Search" value={wordsEnter} onChange={handleFilter} />
+                {filter.length === 0 ? (<div className='searchicon'><FaSearch className="icon" onClick={goSearch}/></div>) 
+                :(<button className='searchicon' onClick={clearInput}><IoCloseSharp className="closeicon" /></button>)}
+            </div>
+            {filter.length != 0 && (
+            <div className='result'>
+                {filter.slice(0,20).map((dataname , index) => {
+                    return(
+                        <a className="searchData" onClick={() => handleClick(dataname.name)}><div className="text">{dataname.name}</div></a>
+                    )
+                })}
+            </div>
+            )}
+        </div>
                 <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><FaUser className='icon'/></div>

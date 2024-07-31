@@ -1,7 +1,9 @@
-import React , {useState} from "react";
+/*import React , {useState} from "react";
 import './searchbar.css'
 import { FaSearch } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
+
+export let searchDataItem = [] ;
 
 function SearchBar({placeholder , data}) {
         const [filter , setFilterData] = useState([]) ;
@@ -30,12 +32,24 @@ function SearchBar({placeholder , data}) {
             setWordsEnter(value);
             setFilterData([]) ;
         }
+
+        const goSearch = () => {
+            const holdData = wordsEnter ;
+            let index ;
+            for (let i = 0; i < data.length; i++) {
+                if(holdData == data[i].name){
+                    index = i ;
+                }
+            }
+            searchDataItem[0] = index ;
+            console.log(searchDataItem) ;
+        }
     
     return(
         <div className='search'>
             <div className='searchinput'>
                 <input type='text' placeholder={placeholder} value={wordsEnter} onChange={handleFilter} />
-                {filter.length === 0 ? (<div className='searchicon'><FaSearch className="icon"/></div>) 
+                {filter.length === 0 ? (<div className='searchicon'><FaSearch className="icon" onClick={goSearch}/></div>) 
                 :(<button className='searchicon' onClick={clearInput}><IoCloseSharp className="closeicon" /></button>)}
             </div>
             {filter.length != 0 && (
@@ -51,4 +65,4 @@ function SearchBar({placeholder , data}) {
     )
 }
 
-export default SearchBar ;
+export default SearchBar ; */
