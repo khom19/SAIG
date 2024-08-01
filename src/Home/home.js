@@ -65,6 +65,7 @@ function Home() {
 
     const [filter , setFilterData] = useState([]) ;
     const [wordsEnter , setWordsEnter] = useState("") ;
+    const [searchItem , setSearchItem] = useState([]) ;
 
     const handleFilter = (event) => {
         const searchWord = event.target.value ;
@@ -127,6 +128,22 @@ function Home() {
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><FaUser className='icon'/></div>
             </div>
+            { searchDataItem.length != 0 ? <div className='display'>{boardGame.map((board , index) => {
+                return(
+                    <div key={index} className='board_name'>
+                        <div className='warp_home'>
+                            <img className='picture' src={board.pic}/>
+                            <div className='info'>
+                                <div className='name'>{board.name}</div>
+                                <div className='players'>( {board.players} players )</div>
+                            </div>
+                        </div>
+                    </div>
+                    )
+                }
+            )}
+            </div>
+            :
             <div className='display'>{boardGame.map((board , index) => {
                 return(
                     <div key={index} className='board_name'>
@@ -142,6 +159,7 @@ function Home() {
                 }
             )}
             </div>
+        }
         </section>   
         ) 
     }
