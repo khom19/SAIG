@@ -34,8 +34,8 @@ color: rgb(65, 33, 33);
   width: 50%;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
-  width: 32.5vw;
-  height: 27.5vw;
+  width: 42.5%;
+  height: auto;
   backdrop-filter: blur(10px);
   background: transparent;
 }
@@ -139,7 +139,7 @@ color: rgb(65, 33, 33);
   text-align: center;
   margin-top: 20px;
   color: rgb(65, 33, 33);
-  
+  margin-bottom: 40px;
 }
 
 .account a {
@@ -147,21 +147,4 @@ color: rgb(65, 33, 33);
   font-weight: 700;
   margin-left: 5px;
   text-decoration: none;
-}
-
-@media all and (max-device-width: 812px) and (orientation: portrait){
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: black;
-    background-image: none;
-  }
-}
-
-@media only screen and (max-device-width: 812px) and (orientation: portrait){
- .phone , .rotate {
-  display: block;
- }
 }

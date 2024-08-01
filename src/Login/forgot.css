@@ -16,8 +16,8 @@
   margin-top: 5vh;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
-  width: 32.5vw;
-  height: 27.5vw;
+  width: 26.5%;
+  height: auto;
   backdrop-filter: blur(10px);
   background: transparent;
 }
@@ -90,6 +90,7 @@
   background: rgb(241, 237, 211);
   font-size: 22px;
   margin-left: 18%;
+  margin-bottom: 40px;
   color: rgb(134, 76, 22);
   font-style: bold;
   cursor: pointer ;

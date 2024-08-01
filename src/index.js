@@ -9,6 +9,7 @@ import SignUp from './Login/signUp';
 import Home from './Home/home';
 import History from './Home/history';
 import Payment from './Home/payment';
+import Profile from './Home/profile';
 
 const router = createBrowserRouter ([
 { 
@@ -35,6 +36,10 @@ const router = createBrowserRouter ([
   path: "Payment",
   element: <Payment />
 },
+{
+  path: "user" ,
+  element: <Profile />
+}
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

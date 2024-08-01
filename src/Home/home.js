@@ -60,12 +60,13 @@ export const boardGame = [
     {name:"Dominion" , players:"2-4" , description:"Players take the role of monarchs and compete against each other to build the most developed kingdom represented by their individual deck of cards." , pic:"https://img.pastemagazine.com/wp-content/uploads/2022/06/21074637/dominion-card-game-main.jpg"}]
 
     let searchDataItem = [] ;
+    let index ;
 
 function Home() {
 
     const [filter , setFilterData] = useState([]) ;
     const [wordsEnter , setWordsEnter] = useState("") ;
-    const [searchItem , setSearchItem] = useState([]) ;
+    const [showItem , setItems] = useState([]) ;
 
     const handleFilter = (event) => {
         const searchWord = event.target.value ;
@@ -89,20 +90,22 @@ function Home() {
         console.log(value) ;
         setWordsEnter(value);
         setFilterData([]) ;
-    }
+    } ;
 
     const goSearch = () => {
         const holdData = wordsEnter ;
-        let index ;
         for (let i = 0; i < boardGame.length; i++) {
             if(holdData == boardGame[i].name){
                 index = i ;
+                searchDataItem[0] = boardGame[index] ;
+                break ;
+            }else{
+                searchDataItem = [] ;
             }
         }
-        searchDataItem[0] = index ;
         console.log(searchDataItem) ;
-    }
-
+        //window.location.reload();
+    } ;
 
         return(
         <section className='homebackground'>
@@ -111,7 +114,7 @@ function Home() {
                 <div className='search'>
             <div className='searchinput'>
                 <input type='text' placeholder="Search" value={wordsEnter} onChange={handleFilter} />
-                {filter.length === 0 ? (<div className='searchicon'><FaSearch className="icon" onClick={goSearch}/></div>) 
+                {filter.length === 0 ? (<div className='searchicon'><FaSearch className="icon" onClick={goSearch} /></div>) 
                 :(<button className='searchicon' onClick={clearInput}><IoCloseSharp className="closeicon" /></button>)}
             </div>
             {filter.length != 0 && (
@@ -126,9 +129,9 @@ function Home() {
         </div>
                 <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
-                <div className='profile'><FaUser className='icon'/></div>
+                <div className='profile'><nav><Link to='/user'><FaUser className='icon'/></Link></nav></div>
             </div>
-            { searchDataItem.length != 0 ? <div className='display'>{boardGame.map((board , index) => {
+            {searchDataItem.length != 0 ? (  <div className='display'>{searchDataItem.map((board , index) => {
                 return(
                     <div key={index} className='board_name'>
                         <div className='warp_home'>
@@ -142,11 +145,11 @@ function Home() {
                     )
                 }
             )}
-            </div>
+            </div>)
             :
-            <div className='display'>{boardGame.map((board , index) => {
+            ( <div className='display'>{boardGame.map((board , index) => {
                 return(
-                    <div key={index} className='board_name'>
+                    <div key={index} className='board_name' >
                         <div className='warp_home'>
                             <img className='picture' src={board.pic}/>
                             <div className='info'>
@@ -158,8 +161,8 @@ function Home() {
                     )
                 }
             )}
-            </div>
-        }
+            </div>)
+            }
         </section>   
         ) 
     }
