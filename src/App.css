@@ -31,7 +31,6 @@ color: rgb(65, 33, 33);
 
 .warp-box {
   margin: auto;
-  width: 50%;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
   width: 42.5%;
@@ -79,7 +78,7 @@ color: rgb(65, 33, 33);
 
 .warp .inputbox .icon {
   position: absolute;
-  left: 280px;
+  left: 70%;
   top: 30%;
   width: 25px;
   height: 20px;

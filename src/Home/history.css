@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
-.historybackground {
-    height: 100vh;
-    font-optical-sizing: auto; 
-    background-color: rgb(241, 237, 211) ;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.historybackground .back {
+.historyhead .back {
     display: flex;
     gap: 20px;
     flex-direction: row;
@@ -19,7 +11,7 @@
     border-bottom: 4px solid rgb(155, 123, 93) ;
 }
 
-.historybackground .back .head {
+.historyhead .back .head {
     font-family: "Black Ops One", system-ui;
     text-align: center;
     font-size: 2.5vw;
@@ -29,7 +21,7 @@
     font-weight: 300;
 }
 
-.historybackground .back nav {
+.historyhead .back nav {
     margin-top: 2.5vh ;
     width: 20vw;
     height: 20vh;

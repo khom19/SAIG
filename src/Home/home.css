@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
-
-.homebackground {
-    height: auto;
-    font-optical-sizing: auto; 
+body {
     background-color: rgb(241, 237, 211) ;
-    background-position: center;
-    background-attachment: fixed;
-    padding-bottom: 2.5%;
 }
 
 .menu {
@@ -67,6 +61,7 @@
 .display {
     margin-left: 2.8vw ;
     margin-top: 3vw;
+    margin-bottom: 2.5%;
     display: flex;
     flex-wrap: wrap;
     gap: 2vw 1.5vw;

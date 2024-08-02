@@ -1,15 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
-.paymentbackground {
-    height: 100vh;
-    font-optical-sizing: auto; 
-    background-color: rgb(241, 237, 211) ;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.paymentbackground .back {
+.paymenthead .back {
     display: flex;
     gap: 20px;
     flex-direction: row;
@@ -20,7 +12,7 @@
     border-bottom: 4px solid rgb(155, 123, 93) ;
 }
 
-.paymentbackground .back .head {
+.paymenthead .back .head {
     font-family: "Black Ops One", system-ui;
     text-align: center;
     font-size: 2.5vw;
@@ -30,7 +22,7 @@
     font-weight: 300;
 }
 
-.paymentbackground .back nav {
+.paymenthead .back nav {
     margin-top: 2.5vh;
     width: 20vw;
     height: 20vh;
