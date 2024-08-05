@@ -56,9 +56,11 @@ function Home() {
             if(holdData == boardGame[i].name){
                 index = i ;
                 searchDataItem[0] = boardGame[index] ;
+                setdisplayItems(searchDataItem) ;
                 break ;
             }else{
                 searchDataItem = [] ;
+                setdisplayItems(boardGame) ;
             }
         }
         console.log(searchDataItem) ;
@@ -96,23 +98,7 @@ function Home() {
                 setdisplayItems = {setdisplayItems}        
                 />
             </div>
-            {searchDataItem.length != 0 ? (  <div className='display'>{searchDataItem.map((board , index) => {
-                return(
-                    <div key={index} className='board_name'>
-                        <div className='warp_home'>
-                            <img className='picture' src={board.pic}/>
-                            <div className='info'>
-                                <div className='name'>{board.name}</div>
-                                <div className='players'>( {board.players} players )</div>
-                            </div>
-                        </div>
-                    </div>
-                    )
-                }
-            )}
-            </div>)
-            :
-            ( <div className='display'>{displayItems.map((board , index) => {
+            <div className='display'>{displayItems.map((board , index) => {
                 return(
                     <div key={index} className='board_name' >
                         <div className='warp_home'>
@@ -126,8 +112,7 @@ function Home() {
                     )
                 }
             )}
-            </div>)
-            }
+            </div>
         </section>   
         ) 
     }
