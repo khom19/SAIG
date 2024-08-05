@@ -16,7 +16,6 @@ const [UserType , setUsertype] = useState('');
 const [secretkey , setSecret] = useState('') ;
 
 const handleSubmit = (e) => {
-
     if(UserType == "admin" && secretkey != "admin123"){
         e.preventDefault() ;
         alert("Invalid Key") ;
@@ -36,7 +35,6 @@ const handleSubmit = (e) => {
             password ,
             });
             console.log(userInfo);
-            userInfo.save();
         }
     } ;
 
