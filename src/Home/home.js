@@ -11,7 +11,7 @@ import { boardGame } from './data.js';
 
     let searchDataItem = [] ;
     let index ;
-    let newItems
+    let newItems ;
 
 function Home() {
 
