@@ -1,7 +1,7 @@
 import React from "react";
 import './button.css' ;
 
-function Button({menuItems , filterCategory , setdisplayItems ,boardGame}) {
+function Button({menuItems , filterCategory , setdisplayItems ,boardGames}) {
     return(
         <div className="container">
             {
@@ -11,7 +11,7 @@ function Button({menuItems , filterCategory , setdisplayItems ,boardGame}) {
                     </button>
                 ))
             }
-            <button className='category' onClick={() => setdisplayItems(boardGame)}>
+            <button className='category' onClick={() => setdisplayItems(boardGames)}>
                 All
             </button>
         </div>

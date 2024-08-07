@@ -16,7 +16,7 @@ function Home() {
     const [boardGame , setboardGame] = useState([]);
     const [filter , setFilterData] = useState([]) ;
     const [wordsEnter , setWordsEnter] = useState("") ;
-    const [displayItems , setdisplayItems] = useState([]);
+    const [displayItems , setdisplayItems] = useState(boardGame);
 
     useEffect(() => {
         const fetchboard = async() => {
