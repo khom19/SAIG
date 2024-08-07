@@ -1,8 +1,7 @@
 import React from "react";
 import './button.css' ;
-import { boardGame } from "./data.js";
 
-function Button({menuItems , filterCategory , setdisplayItems}) {
+function Button({menuItems , filterCategory , setdisplayItems ,boardGame}) {
     return(
         <div className="container">
             {

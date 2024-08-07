@@ -1,70 +1,144 @@
-import React , { useState } from 'react';
+import React , { useEffect, useState } from 'react';
 import './signUp.css'
 import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock , FaKey  } from "react-icons/fa";
 
-export default function SignUp(){
+export default function SignUp(){ 
+    const [users , setUsers] = useState([]);
+    const [admins , setAdmins] = useState([]);
+    const [email , setEmail] = useState('') ;
+    const [username , setUsername] = useState('') ;
+    const [password , setPassword] = useState('') ;
+    const [confirmpassword , setConfirmPassword] = useState('') ;
+    const [UserType , setUsertype] = useState('');
+    const [secretkey , setSecret] = useState('') ;
 
-const [email , setEmail] = useState('') ;
-const [username , setUsername] = useState('') ;
-const [password , setPassword] = useState('') ;
-const [confirmpassword , setConfirmPassword] = useState('') ;
-const [UserType , setUsertype] = useState('');
-const [secretkey , setSecret] = useState('') ;
-
-const handleSubmit = async(e) => {
-
-    if(UserType == "admin" && secretkey != "admin123"){
-        alert("Invalid Key") ;
-        e.preventDefault() ;
-        return ;
-    }else if(UserType == "admin" && secretkey == "admin123"){
-        try {
-            const response = await fetch('http://localhost:5000/api/admins', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, username, password }),
-            });
-            if (response.ok) {
-                alert('User created successfully');
-            } else {
-                alert('Error creating user');
+    useEffect(() => {
+        const fetchusers = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/users');
+                if (response.ok) {
+                    console.log("fectched users success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setUsers(data);
+            }catch(error){
+                console.error('Error:', error);
             }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Error creating user');
+        };
+
+        fetchusers();
+    }, []);
+
+    useEffect(() => {
+        const fetchadmins = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/admins');
+                if (response.ok) {
+                    console.log("fectched admins success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setAdmins(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+
+        fetchadmins();
+    }, []);
+
+    const handleSubmit = async(e) => {
+
+        if(UserType == "admin" && secretkey != "admin123"){
+            alert("Invalid Key") ;
+            e.preventDefault() ;
+            return ;
         }
-    }else if(confirmpassword != password){
-        alert("Passwords do not match") ;
-        e.preventDefault() ;
-        return ;
-    }else if(password.length < 8 ){
-        alert("Password must be at least 8 characters") ;
-        e.preventDefault() ;
-        return ;
-    }else{
-        try {
-        const response = await fetch('http://localhost:5000/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, username, password }),
-        });
-        if (response.ok) {
-            alert('User created successfully');
-        } else {
-            alert('Error creating user');
+        
+        else if(UserType == "admin" && secretkey == "admin123"){
+            let countemail = 0 ;
+
+            for(let i = 0 ; i < admins.length ; i++){
+                if(email == admins[i].email){
+                    countemail++;
+                }
+            }
+
+            if(countemail == 0){
+                try {
+                    const response = await fetch('http://localhost:5000/api/admins', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email, username, password }),
+                    });
+                    if(response.ok) {
+                        alert('Admin created successfully');
+                    } else {
+                        alert('Error creating user');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error creating user');
+                }
+            }else if(countemail != 0){
+                alert('You have already used this email');
+                e.preventDefault() ;
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Error creating user');
-    }}
-    } ;
+        
+        else if(confirmpassword != password){
+            alert("Passwords do not match") ;
+            e.preventDefault() ;
+            return ;
+        }
+        
+        else if(password.length < 8 ){
+            alert("Password must be at least 8 characters") ;
+            e.preventDefault() ;
+            return ;
+        }
+        
+        else{
+            let countemail = 0 ;
+
+            for(let i = 0 ; i < users.length ; i++){
+                if(email == users[i].email){
+                    countemail++;
+                }
+            }
+
+            if(countemail == 0){
+                try {
+                    const response = await fetch('http://localhost:5000/api/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ email, username, password }),
+                    });
+                    if (response.ok) {
+                        alert('User created successfully');
+                    } else {
+                        alert('Error creating user');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error creating user');
+                }
+            }else if(countemail != 0){
+                alert('You have already used this email');
+                e.preventDefault() ;
+                }
+            }
+        } ;
 
         return(
     <form onSubmit={handleSubmit}>

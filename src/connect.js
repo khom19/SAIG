@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors') ;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb');
+const { Link } = require('react-router-dom');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -9,6 +11,7 @@ const port = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(express.json()); 
 
 // MongoDB Connection
 const uri = "mongodb+srv://khom2548:khom192548@saig.34tim.mongodb.net/?retryWrites=true&w=majority&appName=SAIG" ;
@@ -29,8 +32,17 @@ const adminSchema = new mongoose.Schema({
   password: String
 });
 
+const boardGameSchema = new mongoose.Schema({
+    name: String,
+    players: String,
+    category: String,
+    description: String,
+    pic: String
+});
+
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin' , adminSchema) ;
+const Boardgame = mongoose.model('Boardgame' , boardGameSchema) ;
 
 // Routes
 app.post('/api/users', async (req, res) => {
@@ -54,5 +66,44 @@ app.post('/api/admins', async (req, res) => {
       res.status(400).send('Error creating user');
   }
 });
+
+app.post('/api/boardgames', async (req, res) => {
+    const { name, players, category ,description , pic } = req.body;
+    try {
+        const newBoardgame = new Boardgame({ name, players, category ,description , pic });
+        await newBoardgame.save();
+        res.status(201).send('Added boardgame');
+    } catch (err) {
+        res.status(400).send('Adding boardgame error');
+    }
+  });
+
+// Fetch 
+app.get('/api/users', async (req, res) => {
+    try {
+      const users = await User.find();
+      res.json(users);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+app.get('/api/admins', async (req, res) => {
+    try {
+      const admins = await Admin.find();
+      res.json(admins);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+app.get('/api/boardgames', async (req, res) => {
+    try {
+      const boardgames = await Boardgame.find();
+      res.json(boardgames);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
 
 app.listen(port, () => console.log("Server running on port " , {port}));

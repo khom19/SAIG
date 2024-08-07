@@ -1,25 +1,46 @@
 import { Link } from 'react-router-dom';
-import React , {useState} from 'react';
+import React , {useState , useEffect} from 'react';
 import { FaUser , FaHistory } from "react-icons/fa";
-import { MdDescription, MdPayment } from "react-icons/md";
+import { MdPayment } from "react-icons/md";
 import './home.css'
 import './searchbar.css'
 import { FaSearch } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from './button.js' ;
-import { boardGame } from './data.js';
 
     let searchDataItem = [] ;
     let index ;
     let newItems ;
 
 function Home() {
-
-    const menuItems = [...new Set(boardGame.map((val) => val.category))] ;
-
+    const [boardGame , setboardGame] = useState([]);
     const [filter , setFilterData] = useState([]) ;
     const [wordsEnter , setWordsEnter] = useState("") ;
-    const [displayItems , setdisplayItems] = useState(boardGame);
+    const [displayItems , setdisplayItems] = useState([]);
+
+    useEffect(() => {
+        const fetchboard = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/boardgames');
+                if (response.ok) {
+                    console.log("fectched boardgames success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setboardGame(data);
+                setdisplayItems(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+
+        fetchboard();
+    }, []);
+
+    console.log(boardGame);
+
+    const menuItems = [...new Set(boardGame.map((val) => val.category))] ;
 
     const filterCategory = (cate) => {
         newItems = boardGame.filter((newval) => newval.category === cate)
@@ -34,6 +55,7 @@ function Home() {
         }) ;
         if(searchWord === ''){
             setFilterData([]);
+            setdisplayItems(boardGame);
         }else{
             setFilterData(newFilter) ;
         }
@@ -64,7 +86,6 @@ function Home() {
             }
         }
         console.log(searchDataItem) ;
-        //window.location.reload();
     } ;
 
         return(
@@ -95,7 +116,8 @@ function Home() {
                 < Button 
                 menuItems={menuItems}
                 filterCategory = {filterCategory}
-                setdisplayItems = {setdisplayItems}        
+                setdisplayItems = {setdisplayItems}  
+                boardGames={boardGame}      
                 />
             </div>
             <div className='display'>{displayItems.map((board , index) => {
