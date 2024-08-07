@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaUser , FaLock , FaKey  } from "react-icons/fa";
-const collectusers = require('./schema/collectuser') ;
 
 export default function SignUp(){
 
@@ -15,27 +14,56 @@ const [confirmpassword , setConfirmPassword] = useState('') ;
 const [UserType , setUsertype] = useState('');
 const [secretkey , setSecret] = useState('') ;
 
-const handleSubmit = (e) => {
+const handleSubmit = async(e) => {
+
     if(UserType == "admin" && secretkey != "admin123"){
-        e.preventDefault() ;
         alert("Invalid Key") ;
+        e.preventDefault() ;
+        return ;
+    }else if(UserType == "admin" && secretkey == "admin123"){
+        try {
+            const response = await fetch('http://localhost:5000/api/admins', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, username, password }),
+            });
+            if (response.ok) {
+                alert('User created successfully');
+            } else {
+                alert('Error creating user');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error creating user');
+        }
     }else if(confirmpassword != password){
         alert("Passwords do not match") ;
         e.preventDefault() ;
+        return ;
     }else if(password.length < 8 ){
         alert("Password must be at least 8 characters") ;
         e.preventDefault() ;
+        return ;
     }else{
-        e.preventDefault() ;
-
-        console.log(email , username , password , confirmpassword);
-            const userInfo = new collectusers({
-            email ,
-            username ,
-            password ,
-            });
-            console.log(userInfo);
+        try {
+        const response = await fetch('http://localhost:5000/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, username, password }),
+        });
+        if (response.ok) {
+            alert('User created successfully');
+        } else {
+            alert('Error creating user');
         }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Error creating user');
+    }}
     } ;
 
         return(

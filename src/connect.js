@@ -1,25 +1,58 @@
 const express = require('express');
-const app = express();
-const cors = require('cors');
+const cors = require('cors') ;
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const expressSession = require('express-session');
-const flash = require('connect-flash');
 
-app.use(express.static('SAIG'))
-app.use(cors()) ;
-app.use(express.json()) ;
-app.use(express.urlencoded()) ;
-app.use(flash());
+const app = express();
+const port = process.env.PORT || 5000;
 
-app.listen(3000 , () => {
-  console.log("App listenning on port 3000")
-})
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-//connect to mongoose
-mongoose.connect("mongodb+srv://khom2548:khom192548@saig.g9scmye.mongodb.net/?retryWrites=true&w=majority&appName=SAIG").then(() => 
-    {
-    console.log("connected") ;
-    }).catch((error) =>
-    {
-    console.log("Error" , error) ; 
-    });
+// MongoDB Connection
+const uri = "mongodb+srv://khom2548:khom192548@saig.34tim.mongodb.net/?retryWrites=true&w=majority&appName=SAIG" ;
+mongoose.connect(uri)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
+// Schema and Model
+const userSchema = new mongoose.Schema({
+    email: String,
+    username: String,
+    password: String
+});
+
+const adminSchema = new mongoose.Schema({
+  email: String,
+  username: String,
+  password: String
+});
+
+const User = mongoose.model('User', userSchema);
+const Admin = mongoose.model('Admin' , adminSchema) ;
+
+// Routes
+app.post('/api/users', async (req, res) => {
+    const { email, username, password } = req.body;
+    try {
+        const newUser = new User({ email, username, password });
+        await newUser.save();
+        res.status(201).send('User created');
+    } catch (err) {
+        res.status(400).send('Error creating user');
+    }
+});
+
+app.post('/api/admins', async (req, res) => {
+  const { email, username, password } = req.body;
+  try {
+      const newAdmin = new Admin({ email, username, password });
+      await newAdmin.save();
+      res.status(201).send('User created');
+  } catch (err) {
+      res.status(400).send('Error creating user');
+  }
+});
+
+app.listen(port, () => console.log("Server running on port " , {port}));
