@@ -8,15 +8,13 @@ import { FaSearch } from "react-icons/fa";
 import { IoCloseSharp } from "react-icons/io5";
 import Button from './button.js' ;
 
-    let searchDataItem = [] ;
-    let index ;
-    let newItems ;
-
 function Home() {
     const [boardGame , setboardGame] = useState([]);
     const [filter , setFilterData] = useState([]) ;
     const [wordsEnter , setWordsEnter] = useState("") ;
     const [displayItems , setdisplayItems] = useState(boardGame);
+    const [user , setuser] = useState([]) ;
+    let newItems ;
 
     useEffect(() => {
         const fetchboard = async() => {
@@ -38,13 +36,32 @@ function Home() {
         fetchboard();
     }, []);
 
+    useEffect(() => {
+        const fetchcurrentUser = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/currentUser');
+                if (response.ok) {
+                    console.log("fectched success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setuser(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+      
+        fetchcurrentUser();
+      }, []);
+
     console.log(boardGame);
 
     const menuItems = [...new Set(boardGame.map((val) => val.category))] ;
 
     const filterCategory = (cate) => {
-        newItems = boardGame.filter((newval) => newval.category === cate)
-        setdisplayItems(newItems) 
+        newItems = boardGame.filter((newval) => newval.category === cate);
+        setdisplayItems(newItems); 
     }
 
     const handleFilter = (event) => {
@@ -73,20 +90,15 @@ function Home() {
     } ;
 
     const goSearch = () => {
-        const holdData = wordsEnter ;
-        for (let i = 0; i < boardGame.length; i++) {
-            if(holdData == boardGame[i].name){
-                index = i ;
-                searchDataItem[0] = boardGame[index] ;
-                setdisplayItems(searchDataItem) ;
-                break ;
+       const searchDataItem = boardGame.find((item) => item.name.toLowerCase() === wordsEnter.toLowerCase());
+            if(searchDataItem){
+                setdisplayItems([searchDataItem]) ;    
             }else{
                 searchDataItem = [] ;
                 setdisplayItems(boardGame) ;
             }
-        }
-        console.log(searchDataItem) ;
-    } ;
+            console.log(searchDataItem) ;
+        } ;
 
         return(
         <section className='homebackground'>
@@ -110,7 +122,7 @@ function Home() {
         </div>
                 <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History'><FaHistory className='icon' /></Link></nav></div>
-                <div className='profile'><nav><Link to='/user'><FaUser className='icon'/></Link></nav></div>
+                <div className='profile'><nav><Link to='/user' state={{user}}><FaUser className='icon'/></Link></nav></div>
             </div>
             <div className='containCate'>
                 < Button 

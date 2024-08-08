@@ -85,40 +85,10 @@ color: rgb(65, 33, 33);
   color: rgb(134, 76, 22);
 }
 
-.forgot-remem {
-  display: flex;
-  justify-content: space-between;
-  font-size: 15px;
-  margin-top: 20px;
-  margin-left: 17%;
-  margin-right: 17%;
-}
-
-.forgot-remem a {
-  font-family: "Archivo Neue", sans-serif;
-  color: rgb(134, 76, 22);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.forgot-remem .remem {
-  font-family: "Archivo Neue", sans-serif;
-  font-size: 17px;
-  color: rgb(65, 33, 33);
-}
-
-.forgot-remem .remem input[type=checkbox] {
-  margin-right: 6px;
-  line-height: normal;
-  height: 13px;
-  width: 13px;
-  accent-color: rgb(155, 123, 93) ;
-}
-
 .singIn button[type='submit'] {
   font-family: "Archivo Neue", sans-serif;
   font-weight: 700;
-  margin-top: 20px;
+  margin-top: 70px;
   border-radius: 40px;
   border: 1px solid rgb(134, 76, 22);
   outline: none;

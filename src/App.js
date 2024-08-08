@@ -50,16 +50,53 @@ useEffect(() => {
   fetchadmins();
 }, []);
 
+const putCurrentUser = async(email , username) =>{
+  try {
+    const response = await fetch('http://localhost:5000/api/currentUser/66b4f4ed4a78e169326603d4', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email:email, username:username }),
+    });
+    if (response.ok) {
+        navigate('/Home');
+    } else {
+        alert('Error');
+    }
+  }catch (error) {
+    console.error('Error:', error);
+  }
+};
+
+const putCurrentAdmin = async(email , username) =>{
+  try {
+    const response = await fetch('http://localhost:5000/api/currentAdmin/66b505f74bf04466151f307e', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email:email, username:username }),
+    });
+    if (response.ok) {
+        navigate('/Adminpage');
+    } else {
+        alert('Error');
+    }
+  }catch (error) {
+    console.error('Error:', error);
+  }
+};
+
 const handleLogin = (e) => {
   e.preventDefault();
 
   const user = allUser.find(user => user.email === email && user.password === password);
   const admin = allAdmin.find(admin => admin.email === email && admin.password === password);
   if(user){
-    navigate('/Home');
-  }
-  else if(admin){
-    navigate('/Adminpage') ;
+    putCurrentUser(email , user.username);
+  }else if(admin){
+    putCurrentAdmin(email , admin.username);
   }else{
     alert('Invalid email or password');
   }
@@ -94,14 +131,6 @@ const handleLogin = (e) => {
           > 
           </input>
           <FaLock className='icon'/>
-        </div>
-
-        <div className='forgot-remem'>
-          <label className='remem'>
-            <input type='checkbox' ></input>
-            Remember me
-          </label>
-          <nav><Link to='/Forgot'>Forgot password?</Link></nav>
         </div>
 
         <div className='singIn'>

@@ -40,9 +40,21 @@ const boardGameSchema = new mongoose.Schema({
     pic: String
 });
 
+const currentUserSchema = new mongoose.Schema({
+  email: String,
+  username: String
+});
+
+const currentAdminSchema = new mongoose.Schema({
+  email: String,
+  username: String
+});
+
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin' , adminSchema) ;
 const Boardgame = mongoose.model('Boardgame' , boardGameSchema) ;
+const currentUser = mongoose.model('currentUser' , currentUserSchema) ;
+const currentAdmin = mongoose.model('currentAdmin' , currentAdminSchema) ;
 
 // Routes
 app.post('/api/users', async (req, res) => {
@@ -78,6 +90,28 @@ app.post('/api/boardgames', async (req, res) => {
     }
   });
 
+  app.post('/api/currentUser', async (req, res) => {
+    const { email, username } = req.body;
+    try {
+        const newcurrentUser = new currentUser({ email, username });
+        await newcurrentUser.save();
+        res.status(201).send('Added currentUser');
+    } catch (err) {
+        res.status(400).send('Adding currentUser error');
+    }
+  });
+
+  app.post('/api/currentAdmin', async (req, res) => {
+    const { email, username } = req.body;
+    try {
+        const newcurrentAdmin = new currentAdmin({ email, username });
+        await newcurrentAdmin.save();
+        res.status(201).send('Added currentAdmin');
+    } catch (err) {
+        res.status(400).send('Adding currentAdmin error');
+    }
+  });
+
 // Fetch 
 app.get('/api/users', async (req, res) => {
     try {
@@ -103,6 +137,38 @@ app.get('/api/boardgames', async (req, res) => {
       res.json(boardgames);
     } catch (error) {
       res.status(500).send(error.message);
+    }
+  });
+
+  app.get('/api/currentUser', async (req, res) => {
+    try {
+      const currentuser = await currentUser.find();
+      res.json(currentuser);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+  //update
+  app.put('/api/currentUser/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { email , username } = req.body;
+      const updatedUser = await currentUser.findByIdAndUpdate( id , {email,username} , { new: true });
+      res.json(updatedUser);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
+  app.put('/api/currentAdmin/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { email , username } = req.body;
+      const updatedAdmin = await currentAdmin.findByIdAndUpdate( id , {email,username} , { new: true });
+      res.json(updatedAdmin);
+    } catch (error) {
+      res.status(500).send(error);
     }
   });
 
