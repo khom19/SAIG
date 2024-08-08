@@ -10,6 +10,7 @@ import Home from './Home/home';
 import History from './Home/history';
 import Payment from './Home/payment';
 import Profile from './Home/profile';
+import Adminpage from './Admin/admin';
 
 const router = createBrowserRouter ([
 { 
@@ -39,6 +40,10 @@ const router = createBrowserRouter ([
 {
   path: "user" ,
   element: <Profile />
+},
+{
+  path: "Adminpage" ,
+  element: <Adminpage />
 }
 ]);
 

@@ -62,15 +62,9 @@ export default function SignUp(){
         }
         
         else if(UserType == "admin" && secretkey == "admin123"){
-            let countemail = 0 ;
+            const findAdminEmail = admins.find(admins => admins.email === email) ;
 
-            for(let i = 0 ; i < admins.length ; i++){
-                if(email == admins[i].email){
-                    countemail++;
-                }
-            }
-
-            if(countemail == 0){
+            if(!findAdminEmail){
                 try {
                     const response = await fetch('http://localhost:5000/api/admins', {
                         method: 'POST',
@@ -88,7 +82,7 @@ export default function SignUp(){
                     console.error('Error:', error);
                     alert('Error creating user');
                 }
-            }else if(countemail != 0){
+            }else if(findAdminEmail){
                 alert('You have already used this email');
                 e.preventDefault() ;
             }
@@ -107,15 +101,9 @@ export default function SignUp(){
         }
         
         else{
-            let countemail = 0 ;
+            const findUserEmail = users.find(users => users.email === email) ;
 
-            for(let i = 0 ; i < users.length ; i++){
-                if(email == users[i].email){
-                    countemail++;
-                }
-            }
-
-            if(countemail == 0){
+            if(!findUserEmail){
                 try {
                     const response = await fetch('http://localhost:5000/api/users', {
                         method: 'POST',
@@ -133,7 +121,7 @@ export default function SignUp(){
                     console.error('Error:', error);
                     alert('Error creating user');
                 }
-            }else if(countemail != 0){
+            }else if(findUserEmail){
                 alert('You have already used this email');
                 e.preventDefault() ;
                 }

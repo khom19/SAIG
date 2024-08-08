@@ -33,7 +33,7 @@ color: rgb(65, 33, 33);
   margin: auto;
   border: 2px solid rgb(134, 76, 22);
   border-radius: 10px;
-  width: 50%;
+  width: 42.5%;
   height: auto;
   backdrop-filter: blur(10px);
   background: transparent;
@@ -90,8 +90,8 @@ color: rgb(65, 33, 33);
   justify-content: space-between;
   font-size: 15px;
   margin-top: 20px;
-  margin-left: 18%;
-  margin-right: 20%;
+  margin-left: 17%;
+  margin-right: 17%;
 }
 
 .forgot-remem a {
