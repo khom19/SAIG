@@ -1,7 +1,7 @@
 import React, { useState , useEffect } from "react";
 import { Link , useLocation } from "react-router-dom";
 import { IoChevronBack , IoTimeOutline } from "react-icons/io5";
-import { BsCalendarDate } from "react-icons/bs";
+import { BsCoin , BsCalendarDate } from "react-icons/bs";
 import { PiDesk } from "react-icons/pi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.module.css"
@@ -9,13 +9,15 @@ import './boardpopup.css' ;
 
 function Boardpop() {
     const location = useLocation();
-    const boardInfo = location.state?.board
+    const boardInfo = location.state?.board ;
 
     const [starttime , setstarttime] = useState(new Date()) ;
     const [endtime , setendtime] = useState(new Date()) ;
     const [bookdate , setbookdate] = useState(new Date()) ;
     const [booktable , settable] = useState('') ;
-    const [alltable , setselecttable] = useState([]) ;
+    const [Arraytable , setselecttable] = useState('') ;
+    const [price , setprice] = useState(0) ;
+    const allTables = Arraytable.length > 0 ? Arraytable[0]?.Tables : [];
 
     useEffect(() => {
         const fetchTable = async() => {
@@ -36,7 +38,17 @@ function Boardpop() {
         fetchTable();
     }, []);
 
-    console.log(alltable) ;
+    useEffect(() => {
+        const calculatePrice = () => {
+            if(starttime != 0 && endtime != 0){
+                const time = (endtime-starttime)/3600000 ;
+                const price = time*20 ;
+                setprice(price);
+            }
+        };
+    
+        calculatePrice() ;
+    }, [starttime , endtime , booktable]) ;
 
     const minTime = new Date();
     minTime.setHours(9, 0, 0);
@@ -60,6 +72,15 @@ function Boardpop() {
     const handleEnd = (Time) => {
         setendtime(Time) ;
     }
+
+    const handlebookTable = (event) => {
+        settable(event.target.value) ;
+    }
+
+   const filter = (time) => {
+        const hours = time.getHours();
+        return hours >= 9 && hours <= 21;
+   }
 
     return(
         <div className="warpPop">
@@ -101,6 +122,7 @@ function Boardpop() {
                                     dateFormat="h:mm aa"
                                     minTime={minTime}
                                     maxTime={maxTime}
+                                    filterTime={filter}
                                     className="timePicker"
                                 />
                                 - 
@@ -114,6 +136,7 @@ function Boardpop() {
                                     dateFormat="h:mm aa"
                                     minTime={starttime.getTime() + 1800000}
                                     maxTime={maxTime}
+                                    filterTime={filter}
                                     className="timePicker"
                                 /> 
                             </div>
@@ -123,10 +146,20 @@ function Boardpop() {
                                 <div className="Tabletext">
                                     :
                                 </div>
-                            <select className="selectbox">
-                                <option value="Table1">Table1</option>
-                                <option value="Table2">Table2</option>
+                            <select className="selectbox" value={booktable} onChange={handlebookTable}>
+                                {allTables.length >0 ? allTables.map((table , index) => {
+                                    return(
+                                        <option key={index} value={table}>{table}</option>
+                                    )
+                                }) : <option></option>
+                            }
                             </select>
+                            </div>
+                        </div>
+                        <div className="price">
+                            <div className="pricecontain">
+                                <BsCoin className="priceIcon" size={25}/> :
+                                <div className="showprice">{price} Baht</div>
                             </div>
                         </div>
                     </div>
