@@ -10,6 +10,7 @@ import History from './Home/history';
 import Payment from './Home/payment';
 import Profile from './Home/profile';
 import Adminpage from './Admin/admin';
+import Boardpop from './Home/boardpopup';
 
 const router = createBrowserRouter ([
 { 
@@ -39,6 +40,10 @@ const router = createBrowserRouter ([
 {
   path: "Adminpage" ,
   element: <Adminpage />
+},
+{
+  path: "Pop" ,
+  element: <Boardpop />
 }
 ]);
 

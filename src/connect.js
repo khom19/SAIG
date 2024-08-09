@@ -3,7 +3,6 @@ const cors = require('cors') ;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const { MongoClient } = require('mongodb');
-const { Link } = require('react-router-dom');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -50,11 +49,16 @@ const currentAdminSchema = new mongoose.Schema({
   username: String
 });
 
+const allTableSchema = new mongoose.Schema({
+  Tables: Array
+});
+
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin' , adminSchema) ;
 const Boardgame = mongoose.model('Boardgame' , boardGameSchema) ;
 const currentUser = mongoose.model('currentUser' , currentUserSchema) ;
 const currentAdmin = mongoose.model('currentAdmin' , currentAdminSchema) ;
+const allTable = mongoose.model('allTable' , allTableSchema) ;
 
 // Routes
 app.post('/api/users', async (req, res) => {
@@ -112,6 +116,17 @@ app.post('/api/boardgames', async (req, res) => {
     }
   });
 
+  app.post('/api/alltables', async (req, res) => {
+    const { Tables } = req.body;
+    try {
+        const newallTable = new allTable({ Tables });
+        await newallTable.save();
+        res.status(201).send('Added allTable');
+    } catch (err) {
+        res.status(400).send('Adding allTable error');
+    }
+  });
+
 // Fetch 
 app.get('/api/users', async (req, res) => {
     try {
@@ -144,6 +159,15 @@ app.get('/api/boardgames', async (req, res) => {
     try {
       const currentuser = await currentUser.find();
       res.json(currentuser);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+  app.get('/api/alltables', async (req, res) => {
+    try {
+      const newallTable = await allTable.find();
+      res.json(newallTable);
     } catch (error) {
       res.status(500).send(error.message);
     }

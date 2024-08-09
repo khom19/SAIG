@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
 import React , {useState , useEffect} from 'react';
 import { FaUser , FaHistory } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
@@ -14,6 +14,7 @@ function Home() {
     const [wordsEnter , setWordsEnter] = useState("") ;
     const [displayItems , setdisplayItems] = useState(boardGame);
     const [user , setuser] = useState([]) ;
+    const navigate = useNavigate();
     let newItems ;
 
     useEffect(() => {
@@ -100,6 +101,10 @@ function Home() {
             console.log(searchDataItem) ;
         } ;
 
+    const boardpop = (board) => {
+        navigate('/Pop', {state:{board}}) ;
+    }
+
         return(
         <section className='homebackground'>
             <div className='menu'>
@@ -134,7 +139,7 @@ function Home() {
             </div>
             <div className='display'>{displayItems.map((board , index) => {
                 return(
-                    <div key={index} className='board_name' >
+                    <div key={index} className='board_name' onClick={() => boardpop(board)} >
                         <div className='warp_home'>
                             <img className='picture' src={board.pic}/>
                             <div className='info'>
