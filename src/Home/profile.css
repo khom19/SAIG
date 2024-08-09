@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
 
 
 .profilehead .back {
@@ -54,23 +55,23 @@
 .emailhead {
     display: flex;
     align-items: center;
-    width:23%;
+    width:25%;
     height: auto;
     background-color: rgb(65, 33, 33);
     text-align: center;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding-bottom: 5px;
     color: rgb(241, 237, 211) ;
     padding-right: 8px;
+    padding-bottom: 2px;
+    padding-left: 8px;
 }
 .emailIcon {
-    margin-right: 8px;
     margin-left: 8px;
-    margin-top: 2.5px;
 }
 
 .emailInfo {
+    font-family: "Cabin", sans-serif;
     height: auto;
     width: auto;
     min-width: 12vw;
@@ -81,7 +82,7 @@
     border: 2px solid rgb(65, 33, 33);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 .username {
@@ -94,26 +95,26 @@
 }
 
 .usernameIcon {
-    margin-right: 8px;
     margin-left: 8px;
-    margin-top: 2.5px;
 }
 
 .usernamehead {
     display: flex;
     align-items: center;
-    width:23%;
+    width:25%;
     height: auto;
     background-color: rgb(65, 33, 33);
     text-align: center;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding-bottom: 5px;
     color: rgb(241, 237, 211) ;
     padding-right: 8px;
+    padding-bottom: 2px;
+    padding-left: 8px;
 }
 
 .usernameInfo {
+    font-family: "Cabin", sans-serif;
     height: auto;
     width: auto;
     min-width: 12vw;
@@ -124,7 +125,7 @@
     border: 2px solid rgb(65, 33, 33);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 2px;
 }
 
 .logoutLink{
@@ -137,11 +138,10 @@
 .logout a{
     text-decoration: none;
     font-family: "Archivo Neue", sans-serif;
-    font-size: 1vw;
+    font-size: 1.15vw;
     color: rgb(65, 33, 33);
 }
 
 .logoutIcon {
     margin-left: 5px;
-    margin-top: 2.5px;
 }

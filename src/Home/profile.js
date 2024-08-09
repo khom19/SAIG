@@ -21,8 +21,8 @@ function Profile() {
         {user.map((info , index) => {
             return(
             <div key={index} className="warpProfileInfo">
-                <div className="email"><div className="emailhead"><MdEmail className="emailIcon" />Email</div> <p className="emailInfo">{info.email}</p></div>
-                <div className="username"><div className="usernamehead"><FaUserCircle className="usernameIcon" />Username</div><p className="usernameInfo">{info.username}</p></div>
+                <div className="email"><div className="emailhead">Email<MdEmail className="emailIcon" /></div> <p className="emailInfo">{info.email}</p></div>
+                <div className="username"><div className="usernamehead">Username<FaUserCircle className="usernameIcon" size={20}/></div><p className="usernameInfo">{info.username}</p></div>
             </div>
             )
         })}
