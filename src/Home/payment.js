@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect , useState } from "react";
 import './payment.css'
 import { IoChevronBack } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 function Payment() {
+
+    const [allhistory , setallhistory] = useState([]);
+
+    useEffect(() => {
+        const fetchhistory = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/allhistory');
+                if (response.ok) {
+                    console.log("fectched history success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setallhistory(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+    
+        fetchhistory();
+    }, []);
+
     return(
         <section className="paymenthead">
             <div className="back">

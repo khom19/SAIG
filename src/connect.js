@@ -22,7 +22,14 @@ mongoose.connect(uri)
 const userSchema = new mongoose.Schema({
     email: String,
     username: String,
-    password: String
+    password: String,
+    bookdate: Date ,
+    starttime: Date,
+    endtime: Date,
+    table: String,
+    price: Number,
+    points: Number,
+    boardgame: String
 });
 
 const adminSchema = new mongoose.Schema({
@@ -53,18 +60,24 @@ const allTableSchema = new mongoose.Schema({
   Tables: Array
 });
 
+const allhistorySchema = new mongoose.Schema({
+  email: String,
+  alldata: Array , 
+});
+
 const User = mongoose.model('User', userSchema);
 const Admin = mongoose.model('Admin' , adminSchema) ;
 const Boardgame = mongoose.model('Boardgame' , boardGameSchema) ;
 const currentUser = mongoose.model('currentUser' , currentUserSchema) ;
 const currentAdmin = mongoose.model('currentAdmin' , currentAdminSchema) ;
 const allTable = mongoose.model('allTable' , allTableSchema) ;
+const allhistory = mongoose.model('allhistory' , allhistorySchema) ;
 
 // Routes
 app.post('/api/users', async (req, res) => {
-    const { email, username, password } = req.body;
+    const { email, username, password , bookdate , starttime , endtime , table , price , points , boardgame } = req.body;
     try {
-        const newUser = new User({ email, username, password });
+        const newUser = new User({ email, username, password , bookdate , starttime , endtime , table , price , points , boardgame });
         await newUser.save();
         res.status(201).send('User created');
     } catch (err) {
@@ -127,6 +140,17 @@ app.post('/api/boardgames', async (req, res) => {
     }
   });
 
+  app.post('/api/allhistory', async (req, res) => {
+    const { email , alldata } = req.body;
+    try {
+        const newallhistory = new allhistory({ email , alldata});
+        await newallhistory.save();
+        res.status(201).send('Added allhistory');
+    } catch (err) {
+        res.status(400).send('Adding allhistory error');
+    }
+  });
+
 // Fetch 
 app.get('/api/users', async (req, res) => {
     try {
@@ -173,6 +197,25 @@ app.get('/api/boardgames', async (req, res) => {
     }
   });
 
+  app.get('/api/allhistory/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const newallhistory = await allhistory.findById(id);
+      res.json(newallhistory);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+  app.get('/api/allhistory', async (req, res) => {
+    try {
+      const newallhistory = await allhistory.find();
+      res.json(newallhistory);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
   //update
   app.put('/api/currentUser/:id', async (req, res) => {
     try {
@@ -191,6 +234,28 @@ app.get('/api/boardgames', async (req, res) => {
       const { email , username } = req.body;
       const updatedAdmin = await currentAdmin.findByIdAndUpdate( id , {email,username} , { new: true });
       res.json(updatedAdmin);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
+  app.put('/api/users/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { email , username , password , bookdate , starttime , endtime , table , price , points , boardgame } = req.body;
+      const updatedUser = await User.findByIdAndUpdate( id , {email, username, password , bookdate , starttime , endtime , table , price , points , boardgame} , { new: true });
+      res.json(updatedUser);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
+  app.put('/api/allhistory/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { email , alldata } = req.body;
+      const updatedUser = await allhistory.findByIdAndUpdate( id , {email , alldata } , { new: true });
+      res.json(updatedUser);
     } catch (error) {
       res.status(500).send(error);
     }

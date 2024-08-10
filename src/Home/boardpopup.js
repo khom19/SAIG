@@ -2,7 +2,7 @@ import React, { useState , useEffect } from "react";
 import { Link , useLocation } from "react-router-dom";
 import { IoChevronBack , IoTimeOutline } from "react-icons/io5";
 import { BsCoin , BsCalendarDate } from "react-icons/bs";
-import { PiDesk } from "react-icons/pi";
+import { PiDesk , PiCoinVerticalDuotone } from "react-icons/pi";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.module.css"
 import './boardpopup.css' ;
@@ -10,14 +10,36 @@ import './boardpopup.css' ;
 function Boardpop() {
     const location = useLocation();
     const boardInfo = location.state?.board ;
+    const currentUser = location.state?.user ;
 
-    const [starttime , setstarttime] = useState(new Date()) ;
-    const [endtime , setendtime] = useState(new Date()) ;
+    const [starttime , setstarttime] = useState(new Date(0)) ;
+    const [endtime , setendtime] = useState(new Date(0)) ;
     const [bookdate , setbookdate] = useState(new Date()) ;
-    const [booktable , settable] = useState('') ;
+    const [booktable , settable] = useState('Table1') ;
     const [Arraytable , setselecttable] = useState('') ;
     const [price , setprice] = useState(0) ;
+    const [points , setpoints] = useState(0) ;
+    const [allhistory , setallhistory] = useState([]); 
     const allTables = Arraytable.length > 0 ? Arraytable[0]?.Tables : [];
+
+    useEffect(() => {
+        const fetchhistory = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/allhistory');
+                if (response.ok) {
+                    console.log("fectched history success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setallhistory(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+    
+        fetchhistory();
+    }, []);
 
     useEffect(() => {
         const fetchTable = async() => {
@@ -40,11 +62,11 @@ function Boardpop() {
 
     useEffect(() => {
         const calculatePrice = () => {
-            if(starttime != 0 && endtime != 0){
-                const time = (endtime-starttime)/3600000 ;
-                const price = time*20 ;
-                setprice(price);
-            }
+            const time = (endtime-starttime)/3600000 ;
+            const price = time*20 ;
+            const points = price/5 ;
+            setprice(price);
+            setpoints(points);
         };
     
         calculatePrice() ;
@@ -56,6 +78,8 @@ function Boardpop() {
     const maxTime = new Date();
     maxTime.setHours(21, 0, 0);
 
+    const handlemin = new Date(0);
+
     const today = new Date();
     
     const handlebookdate = (Date) => {
@@ -65,12 +89,15 @@ function Boardpop() {
     const handleStart = (Time) => {
         setstarttime(Time) ;
         if(Time >= endtime){
-            setendtime(new Date(Time.getTime() + 3600000)) ;
+            setendtime(new Date(Time.getTime() + 1800000)) ;
         }
     }
 
     const handleEnd = (Time) => {
         setendtime(Time) ;
+        if(handlemin >= starttime){
+            setstarttime(new Date(Time.getTime() - 1800000)) ;
+        }
     }
 
     const handlebookTable = (event) => {
@@ -82,7 +109,97 @@ function Boardpop() {
         return hours >= 9 && hours <= 21;
    }
 
+   const checkTime = (starttime , endtime) => {
+        if (starttime >= endtime) {
+            return { status: false, Text: "End time must be after start time" };
+        }else {
+            return{status:true}
+        }
+   }
+
+   const Add = async(e) => {
+        e.preventDefault();
+
+        const check = checkTime(starttime,endtime) ;
+        if(!check.status){
+            alert(check.Text)
+            return ;
+        }
+
+        const history = allhistory.find(history => history.email === currentUser[0].email)
+        const historyId = history ? history._id : null ;
+
+      if(historyId === null){
+        try {
+            const response = await fetch('http://localhost:5000/api/allhistory', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    email: currentUser[0].email ,
+                    alldata : [{bookdate ,
+                        starttime,
+                        endtime,
+                        table: booktable,
+                        price,
+                        points,
+                        boardgame: boardInfo.name ,
+                        status: "waiting",
+                        payment: "waiting"
+                    }],
+                }),
+            });
+            if (response.ok) {
+                alert('Adding to cart successfully');
+                console.log('history created successfully');
+            } else {
+                alert('Error creating history');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error creating user');
+        }
+      }else{
+        try {
+            const responseoldhistory = await fetch(`http://localhost:5000/api/allhistory/${historyId}`) ;
+            const history = await responseoldhistory.json();
+
+            const newalldata = [...history.alldata , {
+                bookdate,
+                starttime,
+                endtime,
+                table: booktable,
+                price,
+                points,
+                boardgame: boardInfo.name ,
+                status: "waiting",
+                payment: "waiting"
+            }] ;
+
+            const responseupdate = await fetch(`http://localhost:5000/api/allhistory/${historyId}` , {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    alldata : newalldata 
+            })
+        });
+        if (responseupdate.ok) {
+            alert('Adding to cart successfully');
+            console.log('Adding to allhistory successfully');
+        } else {
+            alert('Error');
+        }
+      }catch (error) {
+        console.error('Error:', error);
+      }
+      }
+    };
+
     return(
+        <form onSubmit={Add}>   
         <div className="warpPop">
             <div className="BackHome">
                 <nav><Link to='/Home'><IoChevronBack size={40} color='rgb(241, 237, 211)'/></Link></nav>
@@ -121,7 +238,7 @@ function Boardpop() {
                                     timeCaption="Time"
                                     dateFormat="h:mm aa"
                                     minTime={minTime}
-                                    maxTime={maxTime}
+                                    maxTime={maxTime.getTime() - 1800000}
                                     filterTime={filter}
                                     className="timePicker"
                                 />
@@ -160,12 +277,19 @@ function Boardpop() {
                             <div className="pricecontain">
                                 <BsCoin className="priceIcon" size={25}/> :
                                 <div className="showprice">{price} Baht</div>
+                                <PiCoinVerticalDuotone className="pointsIcon" size={25}/> :
+                                <div className="showpoints">{points} Points</div>
+                            </div>
+                            <div className="Book">
+                                <button type="submit" className="Booking">Add to cart</button>
                             </div>
                         </div>
+                        <div className="PStext"><p> * Don't worry! When you play, you can change the boardgame any time.</p></div>
                     </div>
                 </div>
             </div>
         </div>
+        </form>  
     )
 }
 
