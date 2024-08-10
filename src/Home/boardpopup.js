@@ -21,7 +21,27 @@ function Boardpop() {
     const [price , setprice] = useState(0) ;
     const [points , setpoints] = useState(0) ;
     const [allhistory , setallhistory] = useState([]); 
+    const [user , setuser] = useState([]) ;
     const allTables = Arraytable.length > 0 ? Arraytable[0]?.Tables : [];
+
+    useEffect(() => {
+        const fetchcurrentUser = async() => {
+            try {
+                const response = await fetch('http://localhost:5000/api/currentUser');
+                if (response.ok) {
+                    console.log("fectched success");
+                  }else{
+                    console.log("Error");
+                  }
+                const data = await response.json();
+                setuser(data);
+            }catch(error){
+                console.error('Error:', error);
+            }
+        };
+      
+        fetchcurrentUser();
+      }, []);
 
     useEffect(() => {
         const fetchhistory = async() => {
@@ -153,7 +173,7 @@ function Boardpop() {
             });
             if (response.ok) {
                 alert('Adding to cart successfully');
-                navigate('/Payment') ;
+                navigate('/Payment' , {state:{user}}) ;
                 console.log('history created successfully');
             } else {
                 alert('Error creating history');
@@ -190,7 +210,7 @@ function Boardpop() {
         });
         if (responseupdate.ok) {
             alert('Adding to cart successfully');
-            navigate('/Payment') ;
+            navigate('/Payment' , {state:{user}}) ;
             console.log('Adding to allhistory successfully');
         } else {
             alert('Error');

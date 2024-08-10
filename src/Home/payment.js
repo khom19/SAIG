@@ -10,6 +10,9 @@ function Payment() {
 
     const [allhistory , setallhistory] = useState([]);
     const [needtopay , setneedtopay] = useState([]) ;
+    const [allprice , setallprice] = useState(0) ;
+    const [allpoints , setallpoints] = useState(0) ;
+    const [pic , setpic] = useState(null);
     const notpay = "waiting" ;
 
     useEffect(() => {
@@ -38,7 +41,12 @@ function Payment() {
 
             const needtopay = userdata?.alldata.filter(data => data.payment === notpay)
             console.log(needtopay)
+
+            const totalprice = needtopay?.reduce((acc, cur) => acc + (cur.price || 0) , 0);
+            const totalpoints = needtopay?.reduce((acc , cur) => acc + (cur.points || 0) , 0);
             
+            setallprice(totalprice)
+            setallpoints(totalpoints)
             setneedtopay(needtopay)
         }
     } , [allhistory, currentUser]);
@@ -63,6 +71,46 @@ function Payment() {
         };
     }
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0] ;
+        setpic(file)
+    }
+
+    const handleFileUpload = async() => {
+        if(!pic){
+            alert('No file selected');
+            return;
+        }else{
+            const history = allhistory.find(history => history.email === currentUser[0].email)
+            const historyId = history ? history._id : null ;
+
+            try {
+                const response = await fetch(`http://localhost:5000/api/allhistory/${historyId}` , {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                } ,
+                body: JSON.stringify({
+                    alldata: history.alldata.map(data => ({
+                        ...data,
+                        payment: 'checking'
+                    }))
+                })
+            })
+            if(response.ok){
+                alert('Payment succesfully')
+            }
+            const updated = await fetch('http://localhost:5000/api/allhistory');
+            if (updated.ok) {
+                const updatedData = await updated.json();
+                setallhistory(updatedData);
+            }
+            }catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
     return(
         <section className="paymenthead">
             <div className="back">
@@ -70,12 +118,25 @@ function Payment() {
                 <h2 className="head">Payment</h2>
             </div>
             <div className="warpAllpayment">
-                <div className="containpayment">
-                    {showneedtopay()}
+                <div className="setdisplay">
+                    <div className="containpayment">
+                        {showneedtopay()}
+                    </div>
+                    <div className="containpromtpay">
+                        <div className="promptPay"></div>
+                        <p className="fake">Fake PromptPay</p>
+                    </div>
                 </div>
-                <div className="containpromtpay">
-                    <div className="promptPay"></div>
-                    <p className="fake">Fake PromptPay</p>
+                <div className="total">
+                    <div className="totalprice"><div className="totalpricetext">Total price :</div>{allprice}</div>
+                    <div className="totalpoints"><div className="totalpointstext">Total points :</div>{allpoints}</div>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="selectfile"
+                    />
+                    <button onClick={handleFileUpload} className="confirmSubmit">Submit</button>
                 </div>
             </div>
         </section>

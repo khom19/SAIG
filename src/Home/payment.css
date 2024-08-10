@@ -39,6 +39,7 @@
     border-radius: 10px ;
     border-bottom-left-radius:0% ;
     border-bottom-right-radius:0% ;
+    margin-top: 75%;
 }
 
 .fake {
@@ -57,15 +58,98 @@
 }
 
 .containpromtpay {
-    margin-left: 65%;
+    margin-left: 15%;
     margin-top: 7.5%;
 }
 
-.containpayment {
+.warpTopay {
+    font-family: "Archivo Neue", sans-serif;
     display: flex;
+    width: 110%;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(65, 33, 33);
+    margin-bottom: 1%;
+    margin-top: 2%; 
+    padding-bottom: 20px;
+    text-align: center;
 }
 
-.warpAllpayment {
+.paytext {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.setdisplay {
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -12.5%;
+}
+
+.total {
+    font-family: "Archivo Neue", sans-serif;
+    display: flex;
+    gap: 50px;
+    font-size: 20px;
+    margin-left: 10%;
+}
+
+.totalpoints {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+}
+
+.totalprice {
+    display: flex;
+    gap: 10px;
+}
+
+.totalpricetext {
+    font-size: 20px;
+    font-weight: 600 ;
+}
+
+.totalpointstext {
+    font-size: 20px;
+    font-weight: 600
+}
+
+.selectfile {
+    font-family: "Archivo Neue", sans-serif;
+    font-size: 16px;
+    display: flex;
+    width: fit-content;
+    margin-left: 5%;
+    background-color: rgb(241, 237, 211);
+    color: rgb(65, 33, 33);
+    text-align: center;
+    padding: 5px;
+    margin-top: -5px;
+}
+
+.confirmSubmit {
+    margin-left: -2.5%;
+    width: 7.5%;
+    color: rgb(241, 237, 211) ;
+    background-color:rgb(65, 33, 33) ;
+    font-size: 20px;
+    border: 1px solid rgb(65, 33, 33);
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer ;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    font-weight: 500;
+    margin-top: -5px;
+}
+
+.containpayment {
+    width: 50%;
 }

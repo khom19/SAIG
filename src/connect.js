@@ -216,7 +216,7 @@ app.get('/api/boardgames', async (req, res) => {
     }
   });
 
-  //update
+  //add
   app.put('/api/currentUser/:id', async (req, res) => {
     try {
       const { id } = req.params;
@@ -256,6 +256,18 @@ app.get('/api/boardgames', async (req, res) => {
       const { email , alldata } = req.body;
       const updatedUser = await allhistory.findByIdAndUpdate( id , {email , alldata } , { new: true });
       res.json(updatedUser);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
+  //update
+  app.patch('/api/allhistory/:id' , async (req ,res) => {
+    try{
+      const { id } = req.params;
+      const { alldata } = req.body;
+      const updatedStatus = await allhistory.findByIdAndUpdate(id , {alldata} , { new: true });
+      res.json(updatedStatus);
     } catch (error) {
       res.status(500).send(error);
     }
