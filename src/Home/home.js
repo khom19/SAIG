@@ -125,7 +125,7 @@ function Home() {
             </div>
             )}
         </div>
-                <div className='payment'><nav><Link to='/Payment'><MdPayment className='icon' /></Link></nav></div>
+                <div className='payment'><nav><Link to='/Payment' state={{user}}><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History' state={{user}}><FaHistory className='icon' /></Link></nav></div>
                 <div className='profile'><nav><Link to='/user' state={{user}}><FaUser className='icon'/></Link></nav></div>
             </div>

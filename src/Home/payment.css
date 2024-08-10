@@ -39,13 +39,10 @@
     border-radius: 10px ;
     border-bottom-left-radius:0% ;
     border-bottom-right-radius:0% ;
-    margin-top: 18vh;
-    margin-left: 75%;
 }
 
 .fake {
     font-family: "Cabin", sans-serif;
-    margin-left: 75%;
     width: 15vw;
     height: 50px;
     background-color: rgb(65, 33, 33);
@@ -57,4 +54,18 @@
     font-weight: 500 ;
     font-size: 22px;
     color: rgb(241, 237, 211);
+}
+
+.containpromtpay {
+    margin-left: 65%;
+    margin-top: 7.5%;
+}
+
+.containpayment {
+    display: flex;
+}
+
+.warpAllpayment {
+    width: 100%;
+    display: flex;
 }

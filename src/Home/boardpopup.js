@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from "react";
-import { Link , useLocation } from "react-router-dom";
+import { Link , useLocation ,useNavigate } from "react-router-dom";
 import { IoChevronBack , IoTimeOutline } from "react-icons/io5";
 import { BsCoin , BsCalendarDate } from "react-icons/bs";
 import { PiDesk , PiCoinVerticalDuotone } from "react-icons/pi";
@@ -11,6 +11,7 @@ function Boardpop() {
     const location = useLocation();
     const boardInfo = location.state?.board ;
     const currentUser = location.state?.user ;
+    const navigate = useNavigate() ;
 
     const [starttime , setstarttime] = useState(new Date(0)) ;
     const [endtime , setendtime] = useState(new Date(0)) ;
@@ -152,6 +153,7 @@ function Boardpop() {
             });
             if (response.ok) {
                 alert('Adding to cart successfully');
+                navigate('/Payment') ;
                 console.log('history created successfully');
             } else {
                 alert('Error creating history');
@@ -188,6 +190,7 @@ function Boardpop() {
         });
         if (responseupdate.ok) {
             alert('Adding to cart successfully');
+            navigate('/Payment') ;
             console.log('Adding to allhistory successfully');
         } else {
             alert('Error');
