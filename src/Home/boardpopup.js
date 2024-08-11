@@ -146,7 +146,7 @@ function Boardpop() {
             alert(check.Text)
             return ;
         }
-
+        
         const history = allhistory.find(history => history.email === currentUser[0].email)
         const historyId = history ? history._id : null ;
 
@@ -289,7 +289,7 @@ function Boardpop() {
                             <select className="selectbox" value={booktable} onChange={handlebookTable}>
                                 {allTables.length >0 ? allTables.map((table , index) => {
                                     return(
-                                        <option key={index} value={table}>{table}</option>
+                                        <option key={index} value={table} >{table}</option>
                                     )
                                 }) : <option></option>
                             }

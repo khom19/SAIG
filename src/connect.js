@@ -197,7 +197,7 @@ app.get('/api/boardgames', async (req, res) => {
     }
   });
 
-  app.get('/api/allhistory/:id', async (req, res) => {
+  app.get('/api/allhistory/', async (req, res) => {
     try {
       const { id } = req.params;
       const newallhistory = await allhistory.findById(id);
@@ -216,7 +216,16 @@ app.get('/api/boardgames', async (req, res) => {
     }
   });
 
-  //add
+  app.get('/api/currentAdmin', async (req, res) => {
+    try {
+      const newcurrentAdmin = await currentAdmin.find();
+      res.json(newcurrentAdmin);
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
+  });
+
+  //update all
   app.put('/api/currentUser/:id', async (req, res) => {
     try {
       const { id } = req.params;
@@ -272,5 +281,8 @@ app.get('/api/boardgames', async (req, res) => {
       res.status(500).send(error);
     }
   });
+
+  //delete
+
 
 app.listen(port, () => console.log("Server running on port " , {port}));

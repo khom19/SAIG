@@ -153,3 +153,12 @@
 .containpayment {
     width: 50%;
 }
+
+.deletebutton {
+    display: flex;
+    background-color: rgb(241, 237, 211);
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.deleteboard {
+    width: fit-content;
+    padding-right: 2.5px;
+    padding-left: 2.5px;
+    color: rgb(241, 237, 211);
+    background-color: rgb(65, 33, 33);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    border-radius: 0px;
+    border-bottom-right-radius: 10px;
+}
+
+.deleteboard:hover {
+    height: 100%;
+    background-color:#555;
+    border-bottom-right-radius: 10px;
+    margin-bottom: 2px;
+}

@@ -95,7 +95,6 @@ function Home() {
             if(searchDataItem){
                 setdisplayItems([searchDataItem]) ;    
             }else{
-                searchDataItem = [] ;
                 setdisplayItems(boardGame) ;
             }
             console.log(searchDataItem) ;
