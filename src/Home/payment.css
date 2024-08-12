@@ -65,7 +65,7 @@
 .warpTopay {
     font-family: "Archivo Neue", sans-serif;
     display: flex;
-    width: 110%;
+    width: 115%;
     gap: 15px;
     align-items: center;
     justify-content: center;
@@ -161,4 +161,20 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.deletebooked {
+    background-color: rgb(241, 237, 211);
+    border: none;
+    width: fit-content;
+    height: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.deletebooked:hover{
+    background-color: darkgrey;
 }

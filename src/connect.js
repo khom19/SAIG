@@ -61,7 +61,17 @@ const allTableSchema = new mongoose.Schema({
 
 const allhistorySchema = new mongoose.Schema({
   email: String,
-  alldata: Array , 
+  alldata: [{
+    bookdate: Date,
+    starttime: Date,
+    endtime: Date,
+    table: String,
+    price: Number,
+    points: Number,
+    boardgame: String,
+    payment: String,
+    status: String
+  }] 
 });
 
 const User = mongoose.model('User', userSchema);
@@ -273,7 +283,7 @@ app.get('/api/boardgames', async (req, res) => {
     try {
       const { email , index , status } = req.body ;
      
-      const user = await allhistory.findOne(email) ;
+      const user = await allhistory.findOne({email}) ;
 
       user.alldata[index].payment = status ;
       user.alldata[index].status = status ; 

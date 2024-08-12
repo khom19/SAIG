@@ -2,6 +2,7 @@ import React, { useEffect , useState } from "react";
 import './payment.css'
 import { IoChevronBack } from "react-icons/io5";
 import { Link , useLocation } from 'react-router-dom';
+import { RiDeleteBin5Fill } from "react-icons/ri";
 
 function Payment() {
 
@@ -63,6 +64,7 @@ function Payment() {
                         <div className='paytext'>END:</div><p>{new Date(data.endtime).toLocaleTimeString()}</p>
                         <div className='paytext'>POINTS:</div><p>{data.points}</p>
                         <div className='paytext'>PRICE:</div><p>{data.price}</p>
+                        <button className="deletebooked" onClick={() => deletebooked(index)}><RiDeleteBin5Fill size={20}/></button>
                     </div>
                 )}
             ))
@@ -108,6 +110,36 @@ function Payment() {
             }catch (error) {
                 console.log(error)
             }
+        }
+    }
+
+    const deletebooked = async(index) => {
+        try {
+            const history = allhistory.find(history => history.email === currentUser[0].email)
+            const historyId = history._id ;
+
+            const needtodelete = needtopay[index];
+            
+            const updatealldata = history.alldata.filter(item => item !== needtodelete)
+            const response = await fetch(`http://localhost:5000/api/allhistory/${historyId}` , {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+            } ,
+            body: JSON.stringify({
+                alldata: updatealldata
+                })
+            })
+            if(response.ok){
+                alert('Deleted success')
+                const updated = await fetch('http://localhost:5000/api/allhistory');
+                if (updated.ok) {
+                    const updatedData = await updated.json();
+                    setallhistory(updatedData);
+                }
+            }
+        }catch(error){
+            console.log('Error:' , error)
         }
     }
 

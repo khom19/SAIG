@@ -27,10 +27,10 @@ function AlluserPayment() {
         fetchhistory();
     }, []);
 
-    const handleaccept = async(email , index) => {
+    const handleaccept = async (email, index) => {
         try {
-            const response = await fetch('http://localhost:5000/api/allhistory' , {
-                method: 'PUT' ,
+            const response = await fetch('http://localhost:5000/api/allhistory', {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -40,18 +40,42 @@ function AlluserPayment() {
                     status: 'paid'
                 })
             });
-            if(response.ok){
-                const data = await response.json();
-                setallhistory(data);
-                const newresponse = await fetch('http://localhost:5000/api/allhistory');
-                if (newresponse.ok) {
-                    alert('Updated successfully')
-                }else{
-                    console.log("Error to updated");
-                }
+    
+            if (response.ok) {
+                const updatedData = await response.json();
+                setallhistory(updatedData);
+                alert('Updated successfully');
+            } else {
+                console.log('Error updating status');
             }
-        }catch(error){
-            console.log("Error:" , error)
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handlereject = async(email , index) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/allhistory', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email,
+                    index,
+                    status: 'rejected'
+                })
+            });
+    
+            if (response.ok) {
+                const updatedData = await response.json();
+                setallhistory(updatedData);
+                alert('Updated successfully');
+            } else {
+                console.log('Error updating status');
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
     }
 
@@ -82,7 +106,7 @@ function AlluserPayment() {
                                             <p><div className="detailtext">Points :</div> {detail.points}</p>
                                             <p><div className="detailtext">Status :</div> {detail.status}</p>
                                             <button className="accept" onClick={() => handleaccept( history.email , index)}><GoCheckCircleFill size={25}/></button>
-                                            <button className="reject"><GoXCircleFill size={25}/></button>
+                                            <button className="reject" onClick={() => handlereject( history.email , index)}><GoXCircleFill size={25}/></button>
                                         </div>
                                     ) : null
                                     ))}
