@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors') ;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const { MongoClient } = require('mongodb');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -269,6 +268,23 @@ app.get('/api/boardgames', async (req, res) => {
       res.status(500).send(error);
     }
   });
+
+  app.put('/api/allhistory' , async (req , res) => {
+    try {
+      const { email , index , status } = req.body ;
+     
+      const user = await allhistory.findOne({email}) ;
+
+      user.alldata[index].payment = status ;
+      user.alldata[index].status = status ; 
+      await user.save() ;
+
+      const data = await allhistory.find();
+      res.json(data);
+    }catch(error){
+      res.status(500).send(error);
+    }
+  })
 
   //update
   app.patch('/api/allhistory/:id' , async (req ,res) => {
