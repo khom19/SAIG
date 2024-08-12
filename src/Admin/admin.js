@@ -107,6 +107,39 @@ function Adminpage() {
 
     console.log(admin) ;
 
+    const boarddelete = async(id , e) => {
+        e.stopPropagation();
+        try{
+            const response = await fetch(`http://localhost:5000/api/boardgames/${id}` , {
+                method: 'DELETE' ,
+                headers: {
+                     'Content-Type': 'application/json'
+                }
+            });
+
+            if(response.ok){
+                alert('Successfully deleted') ;
+                try {
+                    const response = await fetch('http://localhost:5000/api/boardgames');
+                    if (response.ok) {
+                        console.log("fectched boardgames success");
+                      }else{
+                        console.log("Error");
+                      }
+                    const data = await response.json();
+                    setboardGame(data);
+                    setdisplayItems(data);
+                }catch(error){
+                    console.error('Error:', error);
+                }
+            }else{
+                alert('Cannot deleted boardgames') ;
+            }
+        }catch (error) {
+            console.log('Error:' , error) ;
+        }
+    }
+
         return(
         <section className='homebackground'>
             <div className='menu'>
@@ -127,9 +160,9 @@ function Adminpage() {
             </div>
             )}
         </div>
-                <div className='payment'><nav><Link to='/Payment' state={{admin}}><MdPayment className='icon' /></Link></nav></div>
+                <div className='payment'><nav><Link to='/AllUserPayment' state={{admin}}><MdPayment className='icon' /></Link></nav></div>
                 <div className='history'><nav><Link to='/History' state={{admin}}><FaHistory className='icon' /></Link></nav></div>
-                <div className='profile'><nav><Link to='/user' state={{admin}}><FaUser className='icon'/></Link></nav></div>
+                <div className='profile'><nav><Link to='/AdminProfile' state={{admin}}><FaUser className='icon'/></Link></nav></div>
             </div>
             <div className='containCate'>
                 < Button 
@@ -147,7 +180,7 @@ function Adminpage() {
                             <div className='info'>
                                 <div className='name'>{board.name}</div>
                                 <div className='players'>( {board.players} players )</div>
-                                <button className='deleteboard'><RiDeleteBin5Fill size={17.5}/></button>
+                                <button className='deleteboard' onClick={(e) => boarddelete(board._id , e)}><RiDeleteBin5Fill size={17.5}/></button>
                             </div>
                         </div>
                     </div>

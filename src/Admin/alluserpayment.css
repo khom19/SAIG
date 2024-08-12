@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap');
+
+.Adminhead {
+    font-family: "Black Ops One", system-ui;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: 1%;
+    color: rgb(241, 237, 211);
+    font-weight: 300;
+    margin-right: auto;
+}
+
+.backtoadmin {
+    margin-left: 22.5%;
+}
+
+.warpemail {
+    display: flex;
+    gap: 5px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 2.5%;
+    padding-left: 20px;
+}
+
+.warpUser {
+    font-family: "Archivo Neue", sans-serif;
+}
+
+.detail {
+    display: flex;
+    width: 100%;
+    font-size: 18px ;
+    gap: 15px ;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(65, 33, 33);
+    border-top: 1px solid rgb(65, 33, 33);
+    padding-top: 5px;
+    margin-top: 10px;
+    padding-left: 5px;
+}
+
+.detail p {
+    display: flex;
+    gap: 5px;
+    margin-left: 5px;
+}
+
+.detailtext {
+    font-family: "Cabin", sans-serif;
+    font-weight: 600;
+}
+
+.accept {
+    background-color: rgb(241, 237, 211) ;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.reject {
+    background-color: rgb(241, 237, 211) ;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.accept:hover {
+    background-color: darkgrey ;
+    width: auto;
+    height: fit-content;
+    border-radius: 40px;
+}
+
+.reject:hover {
+    background-color: darkgrey ;
+    width: auto;
+    height: fit-content;
+    border-radius: 40px; 
+}

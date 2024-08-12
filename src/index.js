@@ -11,6 +11,8 @@ import Payment from './Home/payment';
 import Profile from './Home/profile';
 import Adminpage from './Admin/admin';
 import Boardpop from './Home/boardpopup';
+import AdminProfile from './Admin/adminprofile';
+import AlluserPayment from './Admin/alluserpayment';
 
 const router = createBrowserRouter ([
 { 
@@ -44,6 +46,14 @@ const router = createBrowserRouter ([
 {
   path: "Pop" ,
   element: <Boardpop />
+},
+{
+  path: "AdminProfile" ,
+  element: <AdminProfile />
+},
+{
+  path: "AllUserPayment" ,
+  element: <AlluserPayment />
 }
 ]);
 
