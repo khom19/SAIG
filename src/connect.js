@@ -273,7 +273,7 @@ app.get('/api/boardgames', async (req, res) => {
     try {
       const { email , index , status } = req.body ;
      
-      const user = await allhistory.findOne({email}) ;
+      const user = await allhistory.findOne(email) ;
 
       user.alldata[index].payment = status ;
       user.alldata[index].status = status ; 
