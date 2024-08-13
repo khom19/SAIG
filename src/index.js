@@ -13,6 +13,8 @@ import Adminpage from './Admin/admin';
 import Boardpop from './Home/boardpopup';
 import AdminProfile from './Admin/adminprofile';
 import AlluserPayment from './Admin/alluserpayment';
+import Addboard from './Admin/addboard';
+import Updateboard from './Admin/updateboard';
 
 const router = createBrowserRouter ([
 { 
@@ -54,6 +56,14 @@ const router = createBrowserRouter ([
 {
   path: "AllUserPayment" ,
   element: <AlluserPayment />
+},
+{
+  path: "Addboardgame" ,
+  element: <Addboard />
+},
+{
+  path: "Update",
+  element: <Updateboard />
 }
 ]);
 

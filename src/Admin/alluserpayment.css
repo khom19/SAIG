@@ -73,14 +73,14 @@
 }
 
 .accept:hover {
-    background-color: darkgrey ;
+    background-color: wheat ;
     width: auto;
     height: fit-content;
     border-radius: 40px;
 }
 
 .reject:hover {
-    background-color: darkgrey ;
+    background-color: wheat ;
     width: auto;
     height: fit-content;
     border-radius: 40px; 

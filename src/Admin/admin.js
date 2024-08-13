@@ -8,6 +8,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import Button from '../Home/button.js' ;
 import './admin.css';
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { BsPlusCircleDotted } from "react-icons/bs";
 
 function Adminpage() {
     const [boardGame , setboardGame] = useState([]);
@@ -102,7 +103,7 @@ function Adminpage() {
         } ;
 
     const boardpop = (board) => {
-        navigate('/Pop', {state:{board , admin}}) ;
+        navigate('/Update', {state:{board}}) ;
     }
 
     console.log(admin) ;
@@ -138,6 +139,10 @@ function Adminpage() {
         }catch (error) {
             console.log('Error:' , error) ;
         }
+    }
+
+    const goToAdd = () => {
+        navigate('/Addboardgame')
     }
 
         return(
@@ -188,6 +193,7 @@ function Adminpage() {
                 }
             )}
             </div>
+            <button className='addboard'><BsPlusCircleDotted size={100} onClick={() => goToAdd()}/></button>
         </section>   
         ) 
 }

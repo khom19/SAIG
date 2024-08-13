@@ -146,3 +146,46 @@
 .logoutIcon {
     margin-left: 5px;
 }
+
+.totalprofilepoints {
+    font-family: "Archivo Neue", sans-serif;
+    margin-left: 30%;
+    margin-top: 5%;
+    font-size: 1.25vw;
+    display: flex;
+    gap: 10px;
+}
+
+.pointshead {
+    display: flex;
+    align-items: center;
+    width:25%;
+    height: auto;
+    background-color: rgb(65, 33, 33);
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: rgb(241, 237, 211) ;
+    padding-right: 8px;
+    padding-bottom: 2px;
+    padding-left: 8px;
+}
+
+.points {
+    font-family: "Cabin", sans-serif;
+    height: auto;
+    width: auto;
+    min-width: 12vw;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -10px;
+    border: 2px solid rgb(65, 33, 33);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 2px;
+}
+
+.totalicon {
+    margin-left: 8px;
+}
