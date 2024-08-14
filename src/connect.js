@@ -296,6 +296,17 @@ app.get('/api/boardgames', async (req, res) => {
     }
   })
 
+  app.put('/api/boardgames/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const {  name, players, category ,description , pic } = req.body;
+      const updatedBoard = await Boardgame.findByIdAndUpdate( id , { name, players, category ,description , pic } , { new: true });
+      res.json(updatedBoard);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
   //update
   app.patch('/api/allhistory/:id' , async (req ,res) => {
     try{
