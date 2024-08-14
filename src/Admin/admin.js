@@ -9,6 +9,7 @@ import Button from '../Home/button.js' ;
 import './admin.css';
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { BsPlusCircleDotted } from "react-icons/bs";
+import { PiDeskFill  } from "react-icons/pi";
 
 function Adminpage() {
     const [boardGame , setboardGame] = useState([]);
@@ -166,7 +167,7 @@ function Adminpage() {
             )}
         </div>
                 <div className='payment'><nav><Link to='/AllUserPayment' state={{admin}}><MdPayment className='icon' /></Link></nav></div>
-                <div className='history'><nav><Link to='/History' state={{admin}}><FaHistory className='icon' /></Link></nav></div>
+                <div className='history'><nav><Link to='/AllTable' state={{admin}}><PiDeskFill className='icon' /></Link></nav></div>
                 <div className='profile'><nav><Link to='/AdminProfile' state={{admin}}><FaUser className='icon'/></Link></nav></div>
             </div>
             <div className='containCate'>

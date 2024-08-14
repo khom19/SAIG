@@ -15,6 +15,7 @@ import AdminProfile from './Admin/adminprofile';
 import AlluserPayment from './Admin/alluserpayment';
 import Addboard from './Admin/addboard';
 import Updateboard from './Admin/updateboard';
+import Table from './Admin/table';
 
 const router = createBrowserRouter ([
 { 
@@ -64,6 +65,10 @@ const router = createBrowserRouter ([
 {
   path: "Update",
   element: <Updateboard />
+},
+{
+  path: "AllTable",
+  element: <Table />
 }
 ]);
 

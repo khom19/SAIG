@@ -307,6 +307,17 @@ app.get('/api/boardgames', async (req, res) => {
     }
   });
 
+  app.put('/api/alltables/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const { Tables } = req.body;
+      const updatedTable = await allTable.findByIdAndUpdate( id , { Tables } , { new: true });
+      res.json(updatedTable);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+
   //update
   app.patch('/api/allhistory/:id' , async (req ,res) => {
     try{

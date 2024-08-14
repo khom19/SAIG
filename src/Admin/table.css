@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
+
+.updatetablehead .back {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    width: 100%;
+    height: 5vw;
+    justify-content: flex-end;
+    background-color: rgb(65, 33, 33);
+    border-bottom: 4px solid rgb(155, 123, 93) ;
+}
+
+.updatetablehead .back nav {
+    margin-top: 2.5vh;
+    width: 20vw;
+    height: 20vh;
+    margin-right: 20vw;
+}
+
+.Tablehead {
+    font-family: "Black Ops One", system-ui;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: 1%;
+    color: rgb(241, 237, 211);
+    font-weight: 300;
+    margin-right: auto;
+}
+
+.warpAllTable {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 3%;
+}
+
+.Table {
+    font-family: "Archivo Neue", sans-serif;
+    width: auto;
+    background-color: rgb(65, 33, 33);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(241, 237, 211);
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 10px;
+    gap: 15px;
+}
+
+.deletetable {
+    width: auto;
+    height: fit-content;
+    border: none; 
+    color: rgb(241, 237, 211);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+}
+
+.deletetable:hover {
+    background-color: rgb(155, 123, 93);
+}
+
+.addTable {
+    background-color: rgb(241, 237, 211);
+    border: 2px solid rgb(65, 33, 33);
+    border-radius: 10px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.addTable:hover {
+    background-color: wheat;  
+}
+
+.Addnewtable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px ;
+}
+
+.inputnewtable {
+    font-family: "Archivo Neue", sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
