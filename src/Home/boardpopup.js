@@ -281,7 +281,7 @@ function Boardpop() {
                                 /> 
                             </div>
                         </div>
-                        <div className="Table">
+                        <div className="bookTable">
                             <div className="TableContain"><PiDesk size={27.5} className="TableIcon"/> 
                                 <div className="Tabletext">
                                     :
