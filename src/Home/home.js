@@ -69,7 +69,7 @@ function Home() {
         const searchWord = event.target.value ;
         setWordsEnter(searchWord) ;
         const newFilter = boardGame.filter((value) => {
-            return value.name.toLowerCase().includes(searchWord.toLowerCase()) ;
+            return value?.name.toLowerCase().includes(searchWord?.toLowerCase()) ;
         }) ;
         if(searchWord === ''){
             setFilterData([]);
